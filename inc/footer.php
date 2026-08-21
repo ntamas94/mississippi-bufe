@@ -57,7 +57,7 @@
 
 <div class="callbar" role="region" aria-label="<?= e(t('common.call')) ?>">
   <a class="btn btn--primary" href="tel:<?= e($CFG['phone_raw']) ?>"><?= e(t('common.call')) ?></a>
-  <a class="btn btn--light" href="<?= e(u('motel.php')) ?>#foglalas"><?= e(t('nav.book')) ?></a>
+  <a class="btn btn--light" href="<?= e(u('szallas.php')) ?>#foglalas"><?= e(t('nav.book')) ?></a>
 </div>
 
 <div class="lightbox" id="lightbox" hidden>

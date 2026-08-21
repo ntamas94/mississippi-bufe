@@ -12,10 +12,10 @@ require __DIR__ . '/inc/head.php';
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <span class="eyebrow"><?= e(t('home.kicker')) ?></span>
-    <h1>Mississippi Büfé<br><span class="accent">&amp; Motel Missouri</span></h1>
+    <h1>Mississippi Büfé<br><span class="accent">&amp; Missouri Szálláshely</span></h1>
     <p><?= e(t('home.lead')) ?></p>
     <div class="hero-actions">
-      <a class="btn btn--primary" href="<?= e(u('motel.php')) ?>#foglalas"><?= e(t('home.cta_book')) ?></a>
+      <a class="btn btn--primary" href="<?= e(u('szallas.php')) ?>#foglalas"><?= e(t('home.cta_book')) ?></a>
       <a class="btn btn--ghost" href="<?= e(u('etlap.php')) ?>"><?= e(t('home.cta_menu')) ?></a>
     </div>
     <div class="hero-badges">
@@ -120,7 +120,7 @@ require __DIR__ . '/inc/head.php';
           </ul>
         </div>
         <div class="card-foot">
-          <a class="btn btn--dark btn--sm" href="<?= e(u('motel.php')) ?>"><?= e(t('home.motel_btn')) ?></a>
+          <a class="btn btn--dark btn--sm" href="<?= e(u('szallas.php')) ?>"><?= e(t('home.motel_btn')) ?></a>
         </div>
       </article>
     </div>
@@ -211,7 +211,7 @@ require __DIR__ . '/inc/head.php';
     <p><?= e(t('home.cta_text')) ?></p>
     <div class="cta-actions">
       <a class="btn btn--primary" href="tel:<?= e($CFG['phone_raw']) ?>"><?= e($CFG['phone']) ?></a>
-      <a class="btn btn--ghost" href="<?= e(u('motel.php')) ?>#foglalas"><?= e(t('form.title')) ?></a>
+      <a class="btn btn--ghost" href="<?= e(u('szallas.php')) ?>#foglalas"><?= e(t('form.title')) ?></a>
     </div>
   </div>
 </section>

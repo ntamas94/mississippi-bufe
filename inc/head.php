@@ -16,7 +16,7 @@ $dayNow  = (int) (new DateTime('now', new DateTimeZone('Europe/Budapest')))->for
 $navItems = [
     'home'    => ['index.php',     t('nav.home')],
     'menu'    => ['etlap.php',     t('nav.menu')],
-    'motel'   => ['motel.php',     t('nav.motel')],
+    'szallas' => ['szallas.php',   t('nav.motel')],
     'gallery' => ['galeria.php',   t('nav.gallery')],
     'contact' => ['kapcsolat.php', t('nav.contact')],
 ];
@@ -58,7 +58,7 @@ $navItems = [
 <script type="application/ld+json">
 <?= json_encode([
     '@context'    => 'https://schema.org',
-    '@type'       => ['Restaurant', 'Motel'],
+    '@type'       => ['Restaurant', 'LodgingBusiness'],
     'name'        => $CFG['name'],
     'description' => $meta_desc,
     'servesCuisine' => 'Hungarian',
@@ -95,7 +95,7 @@ $navItems = [
   <div class="wrap header-inner">
     <a class="brand" href="<?= e(u('index.php')) ?>">
       <span class="brand-mark">M</span>
-      <span class="brand-text">Mississippi <em>Büfé &amp; Motel</em></span>
+      <span class="brand-text">Mississippi <em>Büfé &amp; Szálláshely</em></span>
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="<?= e(t('nav.open')) ?>">

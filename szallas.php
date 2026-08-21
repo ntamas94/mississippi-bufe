@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/inc/i18n.php';
 
-$page       = 'motel';
+$page       = 'szallas';
 $meta_title = t('motel.meta_title');
 $meta_desc  = t('motel.meta_desc');
 

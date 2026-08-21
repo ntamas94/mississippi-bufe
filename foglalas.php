@@ -21,7 +21,7 @@ function respond(bool $ok, string $message, bool $isAjax): never
         ], JSON_UNESCAPED_UNICODE);
         exit;
     }
-    header('Location: motel.php?sent=' . ($ok ? '1' : '0') . '#foglalas');
+    header('Location: szallas.php?sent=' . ($ok ? '1' : '0') . '#foglalas');
     exit;
 }
 

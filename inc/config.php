@@ -5,7 +5,10 @@
  */
 
 return [
-    'name'      => 'Mississippi Büfé & Motel Missouri',
+    // Figyelem: a "motel" megnevezés jogszabályban rögzített kategória,
+    // az oldalon ezért "szálláshely" szerepel. A Google-cégadatlap neve
+    // (maps_query) maradhat a bejegyzett Google-listázás szerint.
+    'name'      => 'Mississippi Büfé & Missouri Szálláshely',
     'short'     => 'Mississippi',
     'street'    => 'Alkotmány utca 38.',
     'city'      => 'Egyházasrádóc',
