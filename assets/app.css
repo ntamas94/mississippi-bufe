@@ -411,11 +411,16 @@ img { max-width: 100%; display: block; }
 .btn:hover::after { left: 130%; }
 .btn:active { transform: translateY(0); }
 .btn--sm { padding: 9px 18px; font-size: .92rem; }
-.btn--primary { --btn-bg: linear-gradient(135deg, var(--amber), var(--amber-600)); }
+.btn--primary { --btn-bg: linear-gradient(135deg, var(--amber), var(--amber-600)); --btn-fg: #211505; }
 .btn--dark  { --btn-bg: var(--green-700); --btn-fg: #fbf8f2; }
 .btn--light { --btn-bg: var(--surface); --btn-fg: var(--ink); border-color: var(--line); }
 .btn--ghost { --btn-bg: transparent; --btn-fg: #fbf8f2; border-color: rgba(251, 248, 242, .45); }
 .btn--ghost:hover { background: rgba(251, 248, 242, .12); }
+
+/* a sötét téma linkszíne (":root[data-theme=dark] a") erősebb a .btn-nél —
+   itt kifejezetten visszaállítjuk a gombok saját szövegszínét */
+:root[data-theme="dark"] a.btn,
+a.btn { color: var(--btn-fg); }
 .btn[disabled] { opacity: .6; pointer-events: none; }
 
 .link-arrow {
