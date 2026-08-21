@@ -19,9 +19,9 @@ require __DIR__ . '/inc/head.php';
       <a class="btn btn--ghost" href="<?= e(u('etlap.php')) ?>"><?= e(t('home.cta_menu')) ?></a>
     </div>
     <div class="hero-badges">
-      <span class="hero-badge">★ <b>4,6</b> Google</span>
-      <span class="hero-badge">★ <b>5,0</b> Facebook</span>
-      <span class="hero-badge"><b>6</b> <?= e(ta('home.stats')[0]['label']) ?></span>
+      <?php foreach (ta('home.badges') as $badge): ?>
+      <span class="hero-badge"><?= e($badge) ?></span>
+      <?php endforeach; ?>
     </div>
     <span class="scroll-hint" aria-hidden="true"></span>
   </div>
@@ -168,6 +168,17 @@ require __DIR__ . '/inc/head.php';
         <cite><?= e(t('home.quote_src')) ?></cite>
       </blockquote>
       <?php endforeach; ?>
+
+      <a class="quote quote--score" data-reveal data-delay="3" href="https://www.google.com/maps/search/?api=1&amp;query=<?= rawurlencode($CFG['maps_query']) ?>" target="_blank" rel="noopener">
+        <span class="score-num" data-count="4,6">4,6</span>
+        <span class="stars" aria-label="4,6/5">★★★★★</span>
+        <span class="score-label"><?= e(t('home.score_google')) ?></span>
+      </a>
+      <a class="quote quote--score" data-reveal data-delay="4" href="<?= e($CFG['facebook']) ?>reviews" target="_blank" rel="noopener">
+        <span class="score-num" data-count="5,0">5,0</span>
+        <span class="stars" aria-label="5/5">★★★★★</span>
+        <span class="score-label"><?= e(t('home.score_fb')) ?></span>
+      </a>
     </div>
     <p class="center" style="margin-top:28px">
       <a class="link-arrow" href="<?= e($CFG['facebook']) ?>reviews" target="_blank" rel="noopener"><?= e(t('home.reviews_link')) ?></a>
