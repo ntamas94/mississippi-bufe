@@ -673,6 +673,28 @@ a.btn { color: var(--btn-fg); }
 .quote cite { font-style: normal; font-size: .88rem; color: var(--ink-faint); }
 .stars { color: var(--amber); letter-spacing: 3px; margin-bottom: 10px; }
 
+/* értékelés-csempe a vélemények között */
+.quote--score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+.quote--score::before { content: none; }
+.quote--score .score-num {
+  font-family: var(--serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--amber-600);
+}
+.quote--score .stars { margin-bottom: 0; }
+.quote--score .score-label { font-size: .95rem; color: var(--ink-soft); }
+.quote--score:hover .score-label { color: var(--amber-600); }
+
 /* ============================================================
    Étlap
    ============================================================ */

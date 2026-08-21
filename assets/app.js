@@ -66,9 +66,16 @@
         if (!entry.isIntersecting) return;
         var el = entry.target;
         countIo.unobserve(el);
-        var target = parseFloat(String(el.dataset.count).replace(',', '.'));
-        var decimals = (String(el.dataset.count).split(/[.,]/)[1] || '').length;
-        var useComma = String(el.dataset.count).indexOf(',') !== -1;
+        // "24/7", "10+", "32 cm", "4,6" — csak a szám elejét animáljuk,
+        // az utótag ("/7", "+", " cm") változatlanul a szám után marad
+        var raw = String(el.dataset.count);
+        var m = raw.match(/^(\d+(?:[.,]\d+)?)([\s\S]*)$/);
+        if (!m) return;
+        var numPart = m[1];
+        var suffix = m[2] || '';
+        var target = parseFloat(numPart.replace(',', '.'));
+        var decimals = (numPart.split(/[.,]/)[1] || '').length;
+        var useComma = numPart.indexOf(',') !== -1;
         var start = null;
         var duration = 1400;
         var step = function (ts) {
@@ -76,7 +83,7 @@
           var p = Math.min(1, (ts - start) / duration);
           var eased = 1 - Math.pow(1 - p, 3);
           var val = (target * eased).toFixed(decimals);
-          el.textContent = useComma ? val.replace('.', ',') : val;
+          el.textContent = (useComma ? val.replace('.', ',') : val) + suffix;
           if (p < 1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
