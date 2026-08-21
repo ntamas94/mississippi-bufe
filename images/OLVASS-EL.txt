@@ -1,0 +1,14 @@
+Ide kerülnek a fotók.
+
+Ajánlott fájlnevek (a galeria.html ezekre hivatkozik):
+  terasz.jpg
+  belso.jpg
+  pizza.jpg
+  etel.jpg
+  szoba-1.jpg
+  szoba-2.jpg
+  furdo.jpg
+  epulet.jpg
+
+Ajánlott méret: kb. 1200 x 900 képpont, JPG, fájlonként 300 KB alatt.
+Csak saját készítésű vagy engedélyezett fotót tegyél fel.

@@ -1,0 +1,3 @@
+# a shell szkript a Linux-konténerben fut — mindig LF sorvégekkel kell tárolni
+*.sh text eol=lf
+Dockerfile text eol=lf

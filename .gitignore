@@ -1,0 +1,9 @@
+# foglalási kérések naplója — személyes adat, nem való repóba
+data/
+
+# régi statikus verzió archívuma
+_regi-html/
+
+# szerkesztő/OS szemét
+.DS_Store
+Thumbs.db
