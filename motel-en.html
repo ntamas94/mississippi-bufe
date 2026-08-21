@@ -166,7 +166,7 @@
   <div class="wrap">
     <span class="eyebrow">Accommodation</span>
     <h1>Motel Missouri</h1>
-    <p>Six comfortable rooms with a bathroom and separate toilet, right beside Route 86. For travellers passing through, work crews and weekend guests.</p>
+    <p>Six rooms with private entrances — 25 beds in total — right beside Route 86. The motel receives guests day and night: travellers, work crews, weekend visitors.</p>
     <div class="hero-actions">
       <a class="btn btn--primary" href="#foglalas">Booking request</a>
       <a class="btn btn--ghost" href="tel:+3694950348">+36 94 950 348</a>
@@ -179,8 +179,8 @@
     <div class="grid grid--split">
       <div data-reveal>
         <h2>About the rooms</h2>
-        <p>The motel has six rooms. Each has its own bathroom and a separate toilet. Rooms sleep 1–4 people, so they suit solo travellers, couples and small groups alike.</p>
-        <p>Guests can use the buffet kitchen during opening hours — breakfast is available on request.</p>
+        <p>The motel has six rooms with private entrances and 25 beds in total. Each room has its own bathroom, a separate toilet, a TV and internet access. Rooms sleep 1–4 people. Smoking is not allowed in the rooms.</p>
+        <p>The buffet next to the motel takes care of meals. Breakfast is optional — 500 Ft per person on request (bread, tea, ham, butter, jam). Outside buffet hours, ring the bell at the buffet entrance for your room key.</p>
         <ul class="ticks">
                     <li>6 rooms, 1–4 guests each</li>
                     <li>Own bathroom and separate WC</li>
@@ -193,10 +193,10 @@
 
       <div class="gallery" data-reveal data-delay="1" style="grid-template-columns:1fr 1fr">
         <figure style="grid-column:1 / -1">
-          <button class="shot" type="button" data-caption="Four-bed room">
-            <img src="images/szoba-1.jpg" alt="Four-bed room" loading="lazy">
+          <button class="shot" type="button" data-caption="Guest room">
+            <img src="images/szoba-1.jpg" alt="Guest room" loading="lazy">
           </button>
-          <figcaption>Four-bed room</figcaption>
+          <figcaption>Guest room</figcaption>
         </figure>
         <figure>
           <button class="shot" type="button" data-caption="Bathroom">
@@ -205,10 +205,10 @@
           <figcaption>Bathroom</figcaption>
         </figure>
         <figure>
-          <button class="shot" type="button" data-caption="Yard and parking">
-            <img src="images/udvar.jpg" alt="Yard and parking" loading="lazy">
+          <button class="shot" type="button" data-caption="The motel at night — open 24/7">
+            <img src="images/ejszaka.jpg" alt="The motel at night — open 24/7" loading="lazy">
           </button>
-          <figcaption>Yard and parking</figcaption>
+          <figcaption>The motel at night — open 24/7</figcaption>
         </figure>
       </div>
     </div>
@@ -219,7 +219,7 @@
   <div class="wrap">
     <div data-reveal>
       <h2>Rates</h2>
-      <p class="lead">Rates are per room, per night. Local tourist tax, where applicable, is payable separately.</p>
+      <p class="lead">Rates are per room, per night. Breakfast is optional at 500 Ft per person.</p>
     </div>
 
     <div class="table-wrap" data-reveal style="margin-top:26px">
@@ -244,19 +244,19 @@
           </tr>
                     <tr>
             <td data-label="Number of guests">3 guest(s)</td>
-            <td class="num" data-label="Without breakfast">10 200 Ft</td>
-            <td class="num" data-label="With breakfast">11 700 Ft</td>
+            <td class="num" data-label="Without breakfast">9 200 Ft</td>
+            <td class="num" data-label="With breakfast">10 700 Ft</td>
           </tr>
                     <tr>
             <td data-label="Number of guests">4 guest(s)</td>
-            <td class="num" data-label="Without breakfast">11 400 Ft</td>
-            <td class="num" data-label="With breakfast">13 400 Ft</td>
+            <td class="num" data-label="Without breakfast">10 500 Ft</td>
+            <td class="num" data-label="With breakfast">12 500 Ft</td>
           </tr>
                   </tbody>
       </table>
     </div>
 
-    <div class="note" data-reveal style="margin-top:24px">To be checked: these rates come from the previous website. If they have changed, update inc/config.html.</div>
+    <div class="note" data-reveal style="margin-top:24px">Regular guests get a discount. Local tourist tax, where applicable, is payable separately.</div>
   </div>
 </section>
 
@@ -267,12 +267,12 @@
   <p class="lead">Fill in the form and we will reply by email. For anything urgent, please call instead.</p>
 
   <form id="booking-form" action="foglalas.html" method="post" novalidate
-        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[10200,11700],"4":[11400,13400]}'
+        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
         data-texts='{"required":"Required field","badEmail":"Not a valid email address","badDate":"Please give your arrival date","sending":"Sending…","success":"Thank you! We have received your request and will reply shortly.","error":"Sending failed. Please give us a call instead."}'>
 
-    <input type="hidden" name="csrf" value="d4c2a33dde16d4d8ce0c8c646d56a8d4">
+    <input type="hidden" name="csrf" value="f1f9c1bd511f0b7750ea0a7e735a97c5">
     <input type="hidden" name="lang" value="en">
-    <input type="hidden" name="ts" value="1787293174">
+    <input type="hidden" name="ts" value="1787294066">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -329,7 +329,7 @@
       </div>
       <div class="field field--wide check">
         <input type="checkbox" id="f-breakfast" name="breakfast" value="1">
-        <label for="f-breakfast">Breakfast, please</label>
+        <label for="f-breakfast">Breakfast, please (500 Ft/person)</label>
       </div>
       <div class="field field--wide">
         <label for="f-message">Message</label>
@@ -374,7 +374,10 @@
         <p>
           9783 Egyházasrádóc<br>
           Alkotmány utca 38.        </p>
-        <p><a href="tel:+3694950348">+36 94 950 348</a></p>
+        <p>
+          <a href="tel:+3694950348">+36 94 950 348</a><br>
+          <a href="tel:+36306934875">+36 30 693 4875</a>
+        </p>
         <p><a href="https://www.facebook.com/Szipiszupi23/" target="_blank" rel="noopener">Facebook →</a></p>
       </div>
 
