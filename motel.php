@@ -49,10 +49,10 @@ require __DIR__ . '/inc/head.php';
           <figcaption><?= e(t('gallery.g_bath')) ?></figcaption>
         </figure>
         <figure>
-          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_yard')) ?>">
-            <img src="images/udvar.jpg" alt="<?= e(t('gallery.g_yard')) ?>" loading="lazy">
+          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_night')) ?>">
+            <img src="images/ejszaka.jpg" alt="<?= e(t('gallery.g_night')) ?>" loading="lazy">
           </button>
-          <figcaption><?= e(t('gallery.g_yard')) ?></figcaption>
+          <figcaption><?= e(t('gallery.g_night')) ?></figcaption>
         </figure>
       </div>
     </div>

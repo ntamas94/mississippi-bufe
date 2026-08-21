@@ -33,6 +33,7 @@ require __DIR__ . '/inc/head.php';
             </p>
             <p>
               <?= e(t('common.phone')) ?>: <a href="tel:<?= e($CFG['phone_raw']) ?>"><?= e($CFG['phone']) ?></a><br>
+              Mobil: <a href="tel:<?= e($CFG['mobile_raw']) ?>"><?= e($CFG['mobile']) ?></a><br>
               Facebook: <a href="<?= e($CFG['facebook']) ?>" target="_blank" rel="noopener">Szipiszupi23</a>
             </p>
             <?php /* Ha van e-mail cím, vedd ki a megjegyzésből és írd át:
@@ -73,8 +74,9 @@ require __DIR__ . '/inc/head.php';
           title="<?= e($CFG['name']) ?> — <?= e(t('contact.route_title')) ?>"
           src="https://www.google.com/maps?q=<?= rawurlencode($CFG['maps_query']) ?>&amp;hl=<?= e($LANG) ?>&amp;z=15&amp;output=embed"></iframe>
 
-        <p style="margin-top:14px">
+        <p style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 28px">
           <a class="link-arrow" href="https://www.google.com/maps/dir/?api=1&amp;destination=<?= rawurlencode($CFG['maps_query']) ?>" target="_blank" rel="noopener"><?= e(t('common.route')) ?></a>
+          <a class="link-arrow" href="<?= e($CFG['street_view']) ?>" target="_blank" rel="noopener"><?= e(t('common.street_view')) ?></a>
         </p>
       </div>
 

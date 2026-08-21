@@ -9,7 +9,10 @@
           <?= e($CFG['zip']) ?> <?= e($CFG['city']) ?><br>
           <?= e($CFG['street']) ?>
         </p>
-        <p><a href="tel:<?= e($CFG['phone_raw']) ?>"><?= e($CFG['phone']) ?></a></p>
+        <p>
+          <a href="tel:<?= e($CFG['phone_raw']) ?>"><?= e($CFG['phone']) ?></a><br>
+          <a href="tel:<?= e($CFG['mobile_raw']) ?>"><?= e($CFG['mobile']) ?></a>
+        </p>
         <p><a href="<?= e($CFG['facebook']) ?>" target="_blank" rel="noopener"><?= e(t('common.facebook')) ?> →</a></p>
       </div>
 
