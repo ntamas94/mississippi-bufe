@@ -419,11 +419,17 @@
   /* Csillogó betöltő-vázak, amíg a posztok megérkeznek. */
   var sk = '';
   for (var i = 0; i < 3; i++) {
-    sk += '<article class="feed-card is-skeleton"><div class="feed-img"></div>' +
-      '<div class="feed-body"><span class="sk-line w-40"></span>' +
-      '<span class="sk-line"></span><span class="sk-line w-70"></span></div></article>';
+    sk += '<article class="feed-card is-skeleton">' +
+      '<div class="feed-head"><span class="feed-avatar"></span>' +
+      '<span class="feed-meta"><span class="sk-line w-40"></span><span class="sk-line w-70"></span></span></div>' +
+      '<div class="feed-body"><span class="sk-line"></span><span class="sk-line w-70"></span></div>' +
+      '<div class="feed-img"></div></article>';
   }
   box.innerHTML = '<div class="feed-grid">' + sk + '</div>';
+
+  var head = '<div class="feed-head">' +
+    '<span class="feed-avatar" aria-hidden="true">M</span>' +
+    '<span class="feed-meta">';
 
   var lang = document.documentElement.lang || 'hu';
   var fmt = null;
@@ -437,15 +443,18 @@
       var posts = (data && data.posts) || [];
       if (!posts.length) { fallback(); return; }
       var html = posts.map(function (p) {
-        var img = p.image
-          ? '<div class="feed-img"><img src="' + esc(p.image) + '" alt="" loading="lazy"></div>'
+        var imgs = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+        var img = imgs.length
+          ? '<div class="feed-img' + (imgs.length > 1 ? ' is-multi' : '') + '">' +
+            imgs.map(function (u) { return '<img src="' + esc(u) + '" alt="" loading="lazy">'; }).join('') +
+            '</div>'
           : '';
         var date = (p.time && fmt) ? fmt.format(new Date(p.time * 1000)) : '';
-        var text = p.text ? '<p>' + esc(p.text).replace(/\n/g, '<br>') + '</p>' : '';
+        var text = p.text ? '<div class="feed-body"><p>' + esc(p.text).replace(/\n/g, '<br>') + '</p></div>' : '';
         return '<a class="feed-card" href="' + esc(p.link || page) + '" target="_blank" rel="noopener">' +
-          img + '<div class="feed-body">' +
-          (date ? '<time>' + date + '</time>' : '') + text +
-          '</div></a>';
+          head + (date ? '<time>' + date + '</time>' : '') + '</span></div>' +
+          text + img +
+          '</a>';
       }).join('');
       box.innerHTML = '<div class="feed-grid">' + html + '</div>';
       /* Ha egy kép nem tölt be, a kerete se maradjon ott. */

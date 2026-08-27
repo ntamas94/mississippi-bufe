@@ -28,7 +28,9 @@ function fb_feed_parse(string $html, string $pageUrl): array {
     preg_match_all('/"message":\{[^{}]{0,600}?"text":"((?:[^"\\\\]|\\\\.)*)"/', $html, $m, PREG_OFFSET_CAPTURE);
     foreach ($m[1] as $hit) $msgs[] = [$hit[1], $hit[0]];
 
-    preg_match_all('/"photo_image":\{"uri":"((?:[^"\\\\]|\\\\.)*)"/', $html, $m, PREG_OFFSET_CAPTURE);
+    // Egyképes posztok ("photo_image") + több képes posztok médiablokkjai ("image").
+    // A "profile_picture_depth_0" kulcsokra (kommentelők profilképei) nem illeszkedik.
+    preg_match_all('/"(?:photo_image|image)":\{"uri":"((?:[^"\\\\]|\\\\.)*)"/', $html, $m, PREG_OFFSET_CAPTURE);
     foreach ($m[1] as $hit) $imgs[] = [$hit[1], $hit[0]];
 
     if (!$ids) return [];
@@ -45,7 +47,7 @@ function fb_feed_parse(string $html, string $pageUrl): array {
 
     $posts = [];
     foreach ($ids as [, $id]) {
-        if (!isset($posts[$id])) $posts[$id] = ['id' => $id, 'time' => 0, 'text' => '', 'image' => ''];
+        if (!isset($posts[$id])) $posts[$id] = ['id' => $id, 'time' => 0, 'text' => '', 'image' => '', 'images' => []];
     }
     foreach ($times as [$off, $t]) {
         $id = $nearest($off);
@@ -56,25 +58,30 @@ function fb_feed_parse(string $html, string $pageUrl): array {
         $text = json_decode('"' . $raw . '"') ?? '';
         if ($text !== '' && strlen($text) > strlen($posts[$id]['text'])) $posts[$id]['text'] = $text;
     }
+    $firstPostOff = $ids[0][0];
     foreach ($imgs as [$off, $raw]) {
+        // Az első poszt előtti képek az oldal fejlécéhez (fotócsík, borító) tartoznak — kihagyjuk.
+        if ($off < $firstPostOff - 2000) continue;
         $id  = $nearest($off);
         $uri = json_decode('"' . $raw . '"') ?? '';
-        if ($uri !== '' && !$posts[$id]['image']) {
-            // A lookaside crawler-kép böngészőből nem tölthető be — saját proxyn át adjuk.
-            if (preg_match('~lookaside\.fbsbx\.com/lookaside/crawler/media/\?media_id=(\d+)~', $uri, $mm)) {
-                $uri = 'fb-img.php?id=' . $mm[1];
-            }
-            $posts[$id]['image'] = $uri;
+        if ($uri === '') continue;
+        // A lookaside crawler-kép böngészőből nem tölthető be — saját proxyn át adjuk.
+        if (preg_match('~lookaside\.fbsbx\.com/lookaside/crawler/media/\?media_id=(\d+)~', $uri, $mm)) {
+            $uri = 'fb-img.php?id=' . $mm[1];
+        }
+        if (count($posts[$id]['images']) < 4 && !in_array($uri, $posts[$id]['images'], true)) {
+            $posts[$id]['images'][] = $uri;
         }
     }
 
     $out = [];
     foreach ($posts as $p) {
-        if ($p['text'] === '' && $p['image'] === '') continue;
+        $p['image'] = $p['images'][0] ?? '';
+        if ($p['text'] === '' && !$p['images']) continue;
         // Rendszerszövegek kiszűrése (nem valódi posztok).
         if (preg_match('/hozz\x{00e1}sz\x{00f3}l\x{00e1}s lehet|megv\x{00e1}ltoztatta a|f\x{00e9}nyk\x{00e9}pe$/u', $p['text'])) {
             $p['text'] = '';
-            if ($p['image'] === '') continue;
+            if (!$p['images']) continue;
         }
         $p['link'] = rtrim($pageUrl, '/') . '/posts/' . $p['id'];
         $out[] = $p;

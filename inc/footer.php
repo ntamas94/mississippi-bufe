@@ -70,6 +70,6 @@
   <button class="lightbox-nav lightbox-next" type="button" aria-label="<?= e(t('gallery.next')) ?>">&#8250;</button>
 </div>
 
-<script src="assets/app.js?v=5" defer></script>
+<script src="assets/app.js?v=6" defer></script>
 </body>
 </html>
