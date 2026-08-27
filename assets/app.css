@@ -1251,6 +1251,8 @@ td.num { font-weight: 600; }
 @media (min-width: 900px) { .feed-grid { width: min(60vw, 100%); } }
 .feed-card { display: flex; flex-direction: column; background: var(--paper, #142019); border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease; }
 a.feed-card:hover { transform: translateY(-4px); border-color: var(--amber, #d99a3d); }
+/* A globális :root[data-theme="dark"] a { color: var(--amber) } felülütné — visszaállítjuk normál szövegszínre. */
+:root[data-theme="dark"] a.feed-card, :root[data-theme="dark"] .feed-card { color: inherit; }
 .feed-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px 0; }
 .feed-avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--amber, #d99a3d), #b57722); color: #16110a; font-weight: 800; font-size: 1.1rem; letter-spacing: .02em; }
 .feed-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }

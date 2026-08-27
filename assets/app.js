@@ -1,17 +1,17 @@
-﻿/* Mississippi BÃ¼fÃ© & Motel Missouri â€” oldal-interakciÃ³k */
+/* Mississippi Büfé & Motel Missouri — oldal-interakciók */
 (function () {
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- tÃ©ma (vilÃ¡gos / sÃ¶tÃ©t) ---------- */
+  /* ---------- téma (világos / sötét) ---------- */
   var themeBtn = document.querySelector('.theme-toggle');
   var applyTheme = function (theme) {
     document.documentElement.setAttribute('data-theme', theme);
     if (themeBtn) themeBtn.setAttribute('aria-pressed', String(theme === 'dark'));
   };
   var savedTheme = null;
-  try { savedTheme = localStorage.getItem('theme'); } catch (err) { /* privÃ¡t mÃ³d */ }
+  try { savedTheme = localStorage.getItem('theme'); } catch (err) { /* privát mód */ }
   applyTheme(savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
@@ -21,13 +21,13 @@
     });
   }
 
-  /* ---------- gÃ¶rgetÃ©si folyamatjelzÅ‘ + vissza a tetejÃ©re + hero parallax ---------- */
+  /* ---------- görgetési folyamatjelző + vissza a tetejére + hero parallax ---------- */
   var progress = document.querySelector('.progress');
   var toTop = document.querySelector('.to-top');
   var heroBg = document.querySelector('.hero-bg');
   var ticking = false;
 
-  // a mobil menÃ¼ a fejlÃ©c alatt nyÃ­lik â€” annak magassÃ¡gÃ¡t CSS-vÃ¡ltozÃ³ban tartjuk
+  // a mobil menü a fejléc alatt nyílik — annak magasságát CSS-változóban tartjuk
   var headerEl = document.getElementById('site-header');
   var setHeaderVar = function () {
     if (headerEl) document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
@@ -58,7 +58,7 @@
     });
   }
 
-  /* ---------- szÃ¡mlÃ¡lÃ³k ---------- */
+  /* ---------- számlálók ---------- */
   var counters = document.querySelectorAll('[data-count]');
   if (counters.length && !reduceMotion && 'IntersectionObserver' in window) {
     var countIo = new IntersectionObserver(function (entries) {
@@ -66,8 +66,8 @@
         if (!entry.isIntersecting) return;
         var el = entry.target;
         countIo.unobserve(el);
-        // "24/7", "10+", "32 cm", "4,6" â€” csak a szÃ¡m elejÃ©t animÃ¡ljuk,
-        // az utÃ³tag ("/7", "+", " cm") vÃ¡ltozatlanul a szÃ¡m utÃ¡n marad
+        // "24/7", "10+", "32 cm", "4,6" — csak a szám elejét animáljuk,
+        // az utótag ("/7", "+", " cm") változatlanul a szám után marad
         var raw = String(el.dataset.count);
         var m = raw.match(/^(\d+(?:[.,]\d+)?)([\s\S]*)$/);
         if (!m) return;
@@ -92,7 +92,7 @@
     counters.forEach(function (el) { countIo.observe(el); });
   }
 
-  /* ---------- Ã©tlap-szÅ±rÅ‘ ---------- */
+  /* ---------- étlap-szűrő ---------- */
   var filter = document.querySelector('.menu-filter');
   if (filter) {
     var groups = document.querySelectorAll('.menu-group[data-group]');
@@ -112,7 +112,7 @@
     });
   }
 
-  /* ---------- mobil menÃ¼ ---------- */
+  /* ---------- mobil menü ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
 
@@ -139,7 +139,7 @@
     });
   }
 
-  /* ---------- fejlÃ©c Ã¡rnyÃ©k gÃ¶rgetÃ©skor ---------- */
+  /* ---------- fejléc árnyék görgetéskor ---------- */
   var header = document.getElementById('site-header');
   if (header) {
     var onScroll = function () {
@@ -149,7 +149,7 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---------- beÃºszÃ³ elemek ---------- */
+  /* ---------- beúszó elemek ---------- */
   var revealables = document.querySelectorAll('[data-reveal]');
   if (revealables.length) {
     if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -167,7 +167,7 @@
     }
   }
 
-  /* ---------- Ã©lÅ‘ "most nyitva" jelzÃ©s ---------- */
+  /* ---------- élő "most nyitva" jelzés ---------- */
   var status = document.querySelector('.status');
   if (status && status.dataset.hours) {
     var hours, labels;
@@ -183,7 +183,7 @@
       return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
     };
 
-    // A lÃ¡togatÃ³ sajÃ¡t Ã³rÃ¡ja helyett a magyar idÅ‘t nÃ©zzÃ¼k â€” kÃ¼lfÃ¶ldi vendÃ©gnek is ez a mÃ©rvadÃ³.
+    // A látogató saját órája helyett a magyar időt nézzük — külföldi vendégnek is ez a mérvadó.
     var budapestNow = function () {
       var s = new Date().toLocaleString('en-US', { timeZone: 'Europe/Budapest' });
       return new Date(s);
@@ -200,7 +200,7 @@
 
       if (today && mins >= toMin(today[0]) && mins < toMin(today[1])) {
         open = true;
-        text = '<strong>' + labels.open + '</strong> Â· ' + labels.until.replace('%s', today[1]);
+        text = '<strong>' + labels.open + '</strong> · ' + labels.until.replace('%s', today[1]);
       } else {
         var nextDay = day;
         var nextOpen = null;
@@ -214,7 +214,7 @@
         }
         text = '<strong>' + labels.closed + '</strong>';
         if (nextOpen) {
-          text += ' Â· ' + (nextDay === day
+          text += ' · ' + (nextDay === day
             ? labels.opens.replace('%s', nextOpen)
             : labels.opensDay.replace('%s', labels.days[nextDay]).replace('%s', nextOpen));
         }
@@ -229,7 +229,7 @@
     setInterval(render, 60000);
   }
 
-  /* ---------- kÃ©pnÃ©zÅ‘ ---------- */
+  /* ---------- képnéző ---------- */
   var lightbox = document.getElementById('lightbox');
   var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
 
@@ -282,7 +282,7 @@
       if (ev.key === 'ArrowRight') show(index + 1);
     });
 
-    // ujjhÃºzÃ¡s mobilon
+    // ujjhúzás mobilon
     var startX = null;
     lightbox.addEventListener('touchstart', function (ev) { startX = ev.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', function (ev) {
@@ -293,7 +293,7 @@
     });
   }
 
-  /* ---------- foglalÃ¡si Å±rlap ---------- */
+  /* ---------- foglalási űrlap ---------- */
   var form = document.getElementById('booking-form');
   if (form) {
     var msgBox = form.querySelector('.form-msg');
@@ -336,7 +336,7 @@
       var withBreakfast = form.elements.breakfast.checked ? 1 : 0;
       var row = prices[guests];
       if (!row || !nights) {
-        amountEl.textContent = 'â€”';
+        amountEl.textContent = '—';
         return;
       }
       var total = row[withBreakfast] * nights;
@@ -354,7 +354,7 @@
 
       submit.disabled = true;
       var original = submit.textContent;
-      submit.textContent = texts.sending || 'â€¦';
+      submit.textContent = texts.sending || '…';
       msgBox.hidden = true;
 
       fetch(form.action, {
@@ -369,7 +369,7 @@
           msgBox.classList.toggle('is-bad', !data.ok);
           msgBox.textContent = data.message || (data.ok ? texts.success : texts.error);
           if (data.ok) form.reset();
-          // reset() utÃ¡n Ã¡llÃ­tjuk, mert az a rejtett mezÅ‘ket is visszaÃ­rnÃ¡
+          // reset() után állítjuk, mert az a rejtett mezőket is visszaírná
           if (data.csrf && form.elements.csrf) form.elements.csrf.value = data.csrf;
           updateEstimate();
         })
@@ -386,8 +386,8 @@
   }
 })();
 
-/* Facebook-hÃ­rfolyam (esemenyek.php) â€” sajÃ¡t betÃ¶ltÅ‘, kÃ¡rtyÃ¡kkÃ©nt kirajzolva.
-   Ha a fb-feed.php nem ad posztot, visszaesÃ¼nk a Facebook-iframe-re. */
+/* Facebook-hírfolyam (esemenyek.php) — saját betöltő, kártyákként kirajzolva.
+   Ha a fb-feed.php nem ad posztot, visszaesünk a Facebook-iframe-re. */
 (function () {
   var box = document.getElementById('fbEmbed');
   if (!box) return;
@@ -416,7 +416,7 @@
     box.appendChild(f);
   }
 
-  /* CsillogÃ³ betÃ¶ltÅ‘-vÃ¡zak, amÃ­g a posztok megÃ©rkeznek. */
+  /* Csillogó betöltő-vázak, amíg a posztok megérkeznek. */
   var sk = '';
   for (var i = 0; i < 3; i++) {
     sk += '<article class="feed-card is-skeleton">' +
@@ -457,7 +457,7 @@
           '</a>';
       }).join('');
       box.innerHTML = '<div class="feed-grid">' + html + '</div>';
-      /* Ha egy kÃ©p nem tÃ¶lt be, a kerete se maradjon ott. */
+      /* Ha egy kép nem tölt be, a kerete se maradjon ott. */
       box.querySelectorAll('.feed-img img').forEach(function (im) {
         im.addEventListener('error', function () {
           if (im.parentNode) { im.parentNode.parentNode.removeChild(im.parentNode); }
