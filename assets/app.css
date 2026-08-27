@@ -1243,3 +1243,7 @@ td.num { font-weight: 600; }
   .hero-bg, .hero::before, .hero::after { display: none; }
   .menu-group[hidden] { display: block !important; }
 }
+
+/* Facebook-idővonal (esemenyek.php) */
+.fb-embed { margin-top: 26px; display: flex; justify-content: center; }
+.fb-embed iframe { max-width: 100%; border-radius: 12px; background: #fff; }

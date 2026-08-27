@@ -122,6 +122,7 @@
                 <li><a href="index.html">Kezdőlap</a></li>
                 <li><a href="etlap.html">Étlap</a></li>
                 <li><a href="szallas.html" aria-current="page">Szálláshely</a></li>
+                <li><a href="esemenyek.html">Események</a></li>
                 <li><a href="galeria.html">Galéria</a></li>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
               </ul>
@@ -146,13 +147,12 @@
 
   <div class="status-bar">
     <div class="wrap">
-      <span class="status is-closed"
+      <span class="status is-open"
             data-hours='{"1":["10:00","22:00"],"2":["10:00","22:00"],"3":["10:00","22:00"],"4":["10:00","22:00"],"5":["10:00","22:00"],"6":["16:00","22:00"],"0":["16:00","21:00"]}'
             data-labels='{"open":"Most nyitva","closed":"Most zárva","until":"zárás %s","opens":"nyitás %s","opensDay":"nyitás %s %s","days":["V","H","K","Sze","Cs","P","Szo"]}'>
         <span class="status-dot" aria-hidden="true"></span>
         <span class="status-text">
-                      <strong>Most zárva</strong>
-                          · nyitás 10:00                              </span>
+                      <strong>Most nyitva</strong> · zárás 22:00                  </span>
       </span>
       <a class="status-link" href="kapcsolat.html#nyitvatartas">Nyitvatartás →</a>
     </div>
@@ -272,9 +272,9 @@
         data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
         data-texts='{"required":"Kötelező mező","badEmail":"Nem érvényes e-mail cím","badDate":"Add meg az érkezés napját","sending":"Küldés…","success":"Köszönjük! Megkaptuk a kérést, hamarosan válaszolunk.","error":"A küldés nem sikerült. Kérjük, hívj minket telefonon."}'>
 
-    <input type="hidden" name="csrf" value="9db3f7f5002907204d90e2d9ee597473">
+    <input type="hidden" name="csrf" value="9badee8d3ad377683434f94d2726b204">
     <input type="hidden" name="lang" value="hu">
-    <input type="hidden" name="ts" value="1787296781">
+    <input type="hidden" name="ts" value="1787846401">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -298,7 +298,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Érkezés *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-22" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -398,11 +398,11 @@
             <span>Szerda</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Csütörtök</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Péntek</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -423,6 +423,7 @@
                     <li><a href="index.html">Kezdőlap</a></li>
                     <li><a href="etlap.html">Étlap</a></li>
                     <li><a href="szallas.html">Szálláshely</a></li>
+                    <li><a href="esemenyek.html">Események</a></li>
                     <li><a href="galeria.html">Galéria</a></li>
                     <li><a href="kapcsolat.html">Kapcsolat</a></li>
                   </ul>

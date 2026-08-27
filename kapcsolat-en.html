@@ -122,6 +122,7 @@
                 <li><a href="index-en.html">Home</a></li>
                 <li><a href="etlap-en.html">Menu</a></li>
                 <li><a href="szallas-en.html">Rooms</a></li>
+                <li><a href="esemenyek-en.html">Events</a></li>
                 <li><a href="galeria-en.html">Gallery</a></li>
                 <li><a href="kapcsolat-en.html" aria-current="page">Contact</a></li>
               </ul>
@@ -146,13 +147,12 @@
 
   <div class="status-bar">
     <div class="wrap">
-      <span class="status is-closed"
+      <span class="status is-open"
             data-hours='{"1":["10:00","22:00"],"2":["10:00","22:00"],"3":["10:00","22:00"],"4":["10:00","22:00"],"5":["10:00","22:00"],"6":["16:00","22:00"],"0":["16:00","21:00"]}'
             data-labels='{"open":"Open now","closed":"Closed now","until":"closes at %s","opens":"opens at %s","opensDay":"opens %s at %s","days":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]}'>
         <span class="status-dot" aria-hidden="true"></span>
         <span class="status-text">
-                      <strong>Closed now</strong>
-                          · opens at 10:00                              </span>
+                      <strong>Open now</strong> · closes at 22:00                  </span>
       </span>
       <a class="status-link" href="kapcsolat-en.html#nyitvatartas">Opening hours →</a>
     </div>
@@ -206,11 +206,11 @@
               <span class="day">Wednesday</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li>
+                        <li class="is-today">
               <span class="day">Thursday</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li class="is-today">
+                        <li>
               <span class="day">Friday</span>
               <span class="time">10:00 – 22:00</span>
             </li>
@@ -264,9 +264,9 @@
         data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
         data-texts='{"required":"Required field","badEmail":"Not a valid email address","badDate":"Please give your arrival date","sending":"Sending…","success":"Thank you! We have received your request and will reply shortly.","error":"Sending failed. Please give us a call instead."}'>
 
-    <input type="hidden" name="csrf" value="fc5ec8dc3fd05e8cd3751a5dc2a80a79">
+    <input type="hidden" name="csrf" value="d294dbc1554fe1ca4abe434c65ff5857">
     <input type="hidden" name="lang" value="en">
-    <input type="hidden" name="ts" value="1787296781">
+    <input type="hidden" name="ts" value="1787846402">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -290,7 +290,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Arrival *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-22" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -389,11 +389,11 @@
             <span>Wednesday</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Thursday</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Friday</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -414,6 +414,7 @@
                     <li><a href="index-en.html">Home</a></li>
                     <li><a href="etlap-en.html">Menu</a></li>
                     <li><a href="szallas-en.html">Rooms</a></li>
+                    <li><a href="esemenyek-en.html">Events</a></li>
                     <li><a href="galeria-en.html">Gallery</a></li>
                     <li><a href="kapcsolat-en.html">Contact</a></li>
                   </ul>
