@@ -1244,6 +1244,26 @@ td.num { font-weight: 600; }
   .menu-group[hidden] { display: block !important; }
 }
 
-/* Facebook-idővonal (esemenyek.php) */
-.fb-embed { margin-top: 26px; display: flex; justify-content: center; }
-.fb-embed iframe { max-width: 100%; border-radius: 12px; background: #fff; }
+/* Facebook-hírfolyam (esemenyek.php) — saját kártyák + iframe-tartalék */
+.fb-embed { margin-top: 26px; }
+.fb-embed iframe { max-width: 100%; border-radius: 12px; background: #fff; display: block; margin: 0 auto; }
+.feed-grid { display: flex; flex-direction: column; gap: 18px; max-width: 560px; margin: 0 auto; text-align: left; }
+.feed-card { display: flex; flex-direction: column; background: var(--paper, #142019); border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease; }
+a.feed-card:hover { transform: translateY(-4px); border-color: var(--amber, #d99a3d); }
+.feed-img { aspect-ratio: 4 / 3; overflow: hidden; background: rgba(255, 255, 255, .04); }
+.feed-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feed-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.feed-body time { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--amber, #d99a3d); }
+.feed-body p { margin: 0; font-size: .95rem; line-height: 1.55; }
+/* Betöltő-vázak */
+.feed-card.is-skeleton .feed-img,
+.sk-line { position: relative; overflow: hidden; background: rgba(255, 255, 255, .06); }
+.sk-line { display: block; height: 12px; border-radius: 6px; }
+.sk-line.w-40 { width: 40%; }
+.sk-line.w-70 { width: 70%; }
+.feed-card.is-skeleton .feed-img::after,
+.sk-line::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .08), transparent); animation: sk-shimmer 1.4s infinite; }
+@keyframes sk-shimmer { 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .feed-card.is-skeleton .feed-img::after, .sk-line::after { animation: none; }
+}

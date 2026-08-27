@@ -7,8 +7,7 @@ $meta_desc  = t('events.meta_desc');
 
 require __DIR__ . '/inc/head.php';
 
-/* A Facebook-idővonal csak a látogató kattintására töltődik be —
-   addig a Facebook semmilyen adatot nem kap róla (adatvédelem). */
+/* A Facebook-idővonal automatikusan betöltődik. */
 ?>
 
 <section class="hero hero--compact">
@@ -23,10 +22,7 @@ require __DIR__ . '/inc/head.php';
 <section class="section">
   <div class="wrap">
     <div class="center" data-reveal>
-      <p class="lead" style="margin:0 auto;max-width:560px"><?= e(t('events.fb_text')) ?></p>
-      <div class="fb-embed" id="fbEmbed" data-page="<?= e($CFG['facebook']) ?>">
-        <button type="button" class="btn btn--primary" id="fbLoadBtn"><?= e(t('events.fb_load')) ?></button>
-      </div>
+      <div class="fb-embed" id="fbEmbed" data-page="<?= e($CFG['facebook']) ?>"></div>
       <p class="center" style="margin-top:22px">
         <a class="link-arrow" href="<?= e($CFG['facebook']) ?>" target="_blank" rel="noopener"><?= e(t('events.fb_open')) ?></a>
       </p>
