@@ -385,3 +385,27 @@
     });
   }
 })();
+
+/* Facebook-idővonal (esemenyek.php) — csak a látogató kattintására töltjük be,
+   addig a Facebook nem kap adatot róla. */
+(function () {
+  var box = document.getElementById('fbEmbed');
+  var btn = document.getElementById('fbLoadBtn');
+  if (!box || !btn) return;
+  btn.addEventListener('click', function () {
+    var page = box.getAttribute('data-page') || '';
+    var f = document.createElement('iframe');
+    f.src = 'https://www.facebook.com/plugins/page.php?href=' + encodeURIComponent(page) +
+      '&tabs=timeline&width=500&height=700&small_header=true&adapt_container_width=true' +
+      '&hide_cover=false&show_facepile=false';
+    f.width = '500';
+    f.height = '700';
+    f.title = 'Facebook';
+    f.style.border = 'none';
+    f.style.overflow = 'hidden';
+    f.setAttribute('allow', 'encrypted-media');
+    box.classList.add('is-loaded');
+    box.innerHTML = '';
+    box.appendChild(f);
+  });
+})();

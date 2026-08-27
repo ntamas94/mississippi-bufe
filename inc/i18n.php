@@ -49,6 +49,42 @@ function detect_lang(): string
 
 $LANG = detect_lang();
 $T = require __DIR__ . '/../lang/' . $LANG . '.php';
+
+// Az adminban mentett szövegek rárakása az alap fordításokra (data/overrides.<nyelv>.json).
+// Csak létező kulcsot írunk felül, típushelyesen — így a felülírás nem tudja eltörni az oldalt.
+$__ovFile = __DIR__ . '/../data/overrides.' . $LANG . '.json';
+if (is_file($__ovFile)) {
+    // A kezdő UTF-8 BOM-ot levágjuk (pl. Jegyzettömbből mentett fájl), különben a json_decode elhasal.
+    $__ov = json_decode(preg_replace('/^\xEF\xBB\xBF/', '', (string) file_get_contents($__ovFile)), true);
+    if (is_array($__ov)) {
+        foreach ($__ov as $__path => $__val) {
+            if (!is_string($__val) && !is_int($__val) && !is_float($__val)) {
+                continue;
+            }
+            $__ref   =& $T;
+            $__parts = explode('.', (string) $__path);
+            $__last  = array_pop($__parts);
+            $__ok    = true;
+            foreach ($__parts as $__p) {
+                if (!is_array($__ref) || !array_key_exists($__p, $__ref)) {
+                    $__ok = false;
+                    break;
+                }
+                $__ref =& $__ref[$__p];
+            }
+            if ($__ok && is_array($__ref) && array_key_exists($__last, $__ref)) {
+                if (is_int($__ref[$__last])) {
+                    $__ref[$__last] = (int) $__val;
+                } elseif (is_string($__ref[$__last])) {
+                    $__ref[$__last] = (string) $__val;
+                }
+            }
+            unset($__ref);
+        }
+    }
+    unset($__ov, $__path, $__val, $__parts, $__last, $__ok, $__p);
+}
+unset($__ovFile);
 $CFG = require __DIR__ . '/config.php';
 
 /** Fordított szöveg pontokkal elválasztott kulcs alapján: t('nav.menu') */

@@ -27,6 +27,12 @@ RUN { \
       echo '</IfModule>'; \
     } > /etc/apache2/conf-enabled/cache.conf
 
+# az adminban mentett adatok és a napló kívülről nem elérhetők
+RUN { \
+      echo '<Directory /var/www/html/data>'; \
+      echo '  Require all denied'; \
+      echo '</Directory>'; \
+    } > /etc/apache2/conf-enabled/protect-data.conf
 COPY --chown=www-data:www-data . /var/www/html/
 
 # a foglalási napló írható legyen

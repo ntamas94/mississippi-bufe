@@ -91,3 +91,23 @@ docker compose exec web cat /var/www/html/data/foglalasok.log
 Google Fonts (Inter, Playfair Display) és a Google Térkép iframe. Minden más helyben van.
 Ha a betűtípusokat is helyben szeretnéd, töltsd le őket az `assets/fonts` mappába és
 cseréld a `<link>` sorokat `@font-face` deklarációkra az `app.css` elején.
+
+## Admin szövegszerkesztő
+
+A `/admin/` címen böngészőből átírható az oldal **minden szövege és ára**
+(étlap, szobaárak, mindhárom nyelven), fájlszerkesztés nélkül.
+
+- **Első megnyitáskor** a `/admin/login.php` jelszóbeállítást kér — ezt a
+  jelszót te adod meg, és csak a hash-e tárolódik (`data/admin.php`).
+- A módosítások a `data/overrides.<nyelv>.json` és `data/site.json` fájlokba
+  kerülnek; a `lang/*.php` és `inc/config.php` alapfájlok érintetlenek maradnak.
+  Ha egy mezőt visszaírsz az eredetire, a felülírás magától törlődik.
+- A `data/` mappát az Apache (Dockerfile: `protect-data.conf`, illetve
+  `data/.htaccess`) kívülről letiltja; Docker alatt a `booking-data` volume
+  miatt a mentések a konténer újraindítását is túlélik.
+
+## Események oldal (Facebook)
+
+Az `esemenyek.php` a Facebook-oldal idővonalát mutatja. Adatvédelmi okból az
+idővonal **csak a látogató kattintására** töltődik be — addig a Facebook
+semmilyen adatot nem kap a látogatóról.

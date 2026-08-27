@@ -4,7 +4,7 @@
  * elég ezt a fájlt átírni — az egész oldal ebből dolgozik.
  */
 
-return [
+$CFG_BASE = [
     // Figyelem: a "motel" megnevezés jogszabályban rögzített kategória,
     // az oldalon ezért "szálláshely" szerepel. A Google-cégadatlap neve
     // (maps_query) maradhat a bejegyzett Google-listázás szerint.
@@ -73,3 +73,25 @@ return [
     // interaktív utcakép a Google Térképen (kulcs nélküli hivatalos link)
     'street_view' => 'https://www.google.com/maps/@?api=1&map_action=pano&pano=_SbSJYeIh1C1OgcZ2ylGeA',
 ];
+
+// Az adminban mentett árak felülírják a fentieket (data/site.json).
+$__siteFile = __DIR__ . '/../data/site.json';
+if (is_file($__siteFile)) {
+    // A kezdő UTF-8 BOM-ot levágjuk (pl. Jegyzettömbből mentett fájl), különben a json_decode elhasal.
+    $__site = json_decode(preg_replace('/^\xEF\xBB\xBF/', '', (string) file_get_contents($__siteFile)), true);
+    if (is_array($__site)) {
+        foreach (($__site['room_prices'] ?? []) as $__g => $__pair) {
+            $__g = (int) $__g;
+            if (isset($CFG_BASE['room_prices'][$__g]) && is_array($__pair) && count($__pair) === 2) {
+                $CFG_BASE['room_prices'][$__g] = [(int) $__pair[0], (int) $__pair[1]];
+            }
+        }
+        if (is_numeric($__site['breakfast_per_person'] ?? null)) {
+            $CFG_BASE['breakfast_per_person'] = (int) $__site['breakfast_per_person'];
+        }
+    }
+    unset($__site, $__g, $__pair);
+}
+unset($__siteFile);
+
+return $CFG_BASE;

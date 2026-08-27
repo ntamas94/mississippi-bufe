@@ -7,6 +7,7 @@ return [
         'home'    => 'Kezdőlap',
         'menu'    => 'Étlap',
         'motel'   => 'Szálláshely',
+        'events'  => 'Események',
         'gallery' => 'Galéria',
         'contact' => 'Kapcsolat',
         'book'    => 'Foglalás',
@@ -88,6 +89,16 @@ return [
         'cta_text'    => 'Hívj minket, vagy küldj foglalási kérést az űrlapon — hamarosan visszajelzünk.',
     ],
 
+    'events' => [
+        'meta_title' => 'Események — Mississippi Büfé, Egyházasrádóc',
+        'meta_desc'  => 'Hírek, események és friss bejegyzések a Mississippi Büfé Facebook-oldaláról.',
+        'kicker'     => 'Események',
+        'title'      => 'Hírek és események',
+        'lead'       => 'Akciók, napi ajánlatok, események — minden friss hírünk a Facebook-oldalunkon jelenik meg, itt is megnézheted.',
+        'fb_text'    => 'A gombbal betöltjük a Facebook-idővonalat — addig a Facebook nem kap adatot rólad.',
+        'fb_load'    => 'Facebook-bejegyzések betöltése',
+        'fb_open'    => 'Megnyitás a Facebookon',
+    ],
     'menu' => [
         'meta_title' => 'Étlap — Mississippi Büfé, Egyházasrádóc',
         'meta_desc'  => 'A Mississippi Büfé étlapja: pizzák, melegszendvicsek, magyaros ételek, italok. Elvitelre is.',

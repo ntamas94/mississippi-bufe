@@ -17,6 +17,7 @@ $navItems = [
     'home'    => ['index.php',     t('nav.home')],
     'menu'    => ['etlap.php',     t('nav.menu')],
     'szallas' => ['szallas.php',   t('nav.motel')],
+    'events'  => ['esemenyek.php', t('nav.events')],
     'gallery' => ['galeria.php',   t('nav.gallery')],
     'contact' => ['kapcsolat.php', t('nav.contact')],
 ];

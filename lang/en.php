@@ -7,6 +7,7 @@ return [
         'home'    => 'Home',
         'menu'    => 'Menu',
         'motel'   => 'Rooms',
+        'events'  => 'Events',
         'gallery' => 'Gallery',
         'contact' => 'Contact',
         'book'    => 'Book a room',
@@ -88,6 +89,16 @@ return [
         'cta_text'    => 'Call us, or send a booking request through the form — we will get back to you shortly.',
     ],
 
+    'events' => [
+        'meta_title' => 'Events — Mississippi Büfé, Egyházasrádóc',
+        'meta_desc'  => 'News, events and the latest posts from the Mississippi Büfé Facebook page.',
+        'kicker'     => 'Events',
+        'title'      => 'News & events',
+        'lead'       => 'Specials, daily offers and events — all our latest news appears on our Facebook page, and you can browse it right here.',
+        'fb_text'    => 'Click to load the Facebook timeline — until then Facebook receives no data about you.',
+        'fb_load'    => 'Load Facebook posts',
+        'fb_open'    => 'Open on Facebook',
+    ],
     'menu' => [
         'meta_title' => 'Menu — Mississippi Büfé, Egyházasrádóc',
         'meta_desc'  => 'The menu at Mississippi Büfé: pizzas, hot sandwiches, Hungarian dishes, drinks. Takeaway available.',

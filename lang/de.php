@@ -7,6 +7,7 @@ return [
         'home'    => 'Startseite',
         'menu'    => 'Speisekarte',
         'motel'   => 'Zimmer',
+        'events'  => 'Aktuelles',
         'gallery' => 'Galerie',
         'contact' => 'Kontakt',
         'book'    => 'Zimmer buchen',
@@ -88,6 +89,16 @@ return [
         'cta_text'    => 'Rufen Sie an oder senden Sie eine Buchungsanfrage über das Formular — wir melden uns umgehend.',
     ],
 
+    'events' => [
+        'meta_title' => 'Aktuelles — Mississippi Büfé, Egyházasrádóc',
+        'meta_desc'  => 'Neuigkeiten, Veranstaltungen und aktuelle Beiträge von der Facebook-Seite der Mississippi Büfé.',
+        'kicker'     => 'Aktuelles',
+        'title'      => 'Neuigkeiten & Veranstaltungen',
+        'lead'       => 'Aktionen, Tagesangebote und Veranstaltungen — alle Neuigkeiten erscheinen auf unserer Facebook-Seite und sind auch hier zu sehen.',
+        'fb_text'    => 'Per Klick laden wir die Facebook-Chronik — bis dahin erhält Facebook keine Daten über Sie.',
+        'fb_load'    => 'Facebook-Beiträge laden',
+        'fb_open'    => 'Auf Facebook öffnen',
+    ],
     'menu' => [
         'meta_title' => 'Speisekarte — Mississippi Büfé, Egyházasrádóc',
         'meta_desc'  => 'Die Speisekarte des Mississippi Büfé: Pizzen, warme Sandwiches, ungarische Gerichte, Getränke. Auch zum Mitnehmen.',

@@ -1,5 +1,6 @@
 # foglalási kérések naplója — személyes adat, nem való repóba
 data/
+!data/.htaccess
 
 # régi statikus verzió archívuma
 _regi-html/
