@@ -386,14 +386,20 @@
   }
 })();
 
-/* Facebook-idővonal (esemenyek.php) — csak a látogató kattintására töltjük be,
-   addig a Facebook nem kap adatot róla. */
+/* Facebook-hírfolyam (esemenyek.php) — saját betöltő, kártyákként kirajzolva.
+   Ha a fb-feed.php nem ad posztot, visszaesünk a Facebook-iframe-re. */
 (function () {
   var box = document.getElementById('fbEmbed');
-  var btn = document.getElementById('fbLoadBtn');
-  if (!box || !btn) return;
-  btn.addEventListener('click', function () {
-    var page = box.getAttribute('data-page') || '';
+  if (!box) return;
+  var page = box.getAttribute('data-page') || '';
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function fallback() {
     var f = document.createElement('iframe');
     f.src = 'https://www.facebook.com/plugins/page.php?href=' + encodeURIComponent(page) +
       '&tabs=timeline&width=500&height=700&small_header=true&adapt_container_width=true' +
@@ -403,9 +409,59 @@
     f.title = 'Facebook';
     f.style.border = 'none';
     f.style.overflow = 'hidden';
+    f.loading = 'lazy';
     f.setAttribute('allow', 'encrypted-media');
-    box.classList.add('is-loaded');
     box.innerHTML = '';
+    box.classList.add('is-loaded');
     box.appendChild(f);
-  });
+  }
+
+  /* Csillogó betöltő-vázak, amíg a posztok megérkeznek. */
+  var sk = '';
+  for (var i = 0; i < 3; i++) {
+    sk += '<article class="feed-card is-skeleton">' +
+      '<div class="feed-head"><span class="feed-avatar"></span>' +
+      '<span class="feed-meta"><span class="sk-line w-40"></span><span class="sk-line w-70"></span></span></div>' +
+      '<div class="feed-body"><span class="sk-line"></span><span class="sk-line w-70"></span></div>' +
+      '<div class="feed-img"></div></article>';
+  }
+  box.innerHTML = '<div class="feed-grid">' + sk + '</div>';
+
+  var pageName = 'Mississippi Büfé & Motel Missouri';
+  var head = '<div class="feed-head">' +
+    '<span class="feed-avatar" aria-hidden="true">M</span>' +
+    '<span class="feed-meta"><strong>' + pageName + '</strong>';
+
+  var lang = document.documentElement.lang || 'hu';
+  var fmt = null;
+  try {
+    fmt = new Intl.DateTimeFormat(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+  } catch (e) {}
+
+  fetch('fb-feed.json')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      var posts = (data && data.posts) || [];
+      if (!posts.length) { fallback(); return; }
+      var html = posts.map(function (p) {
+        var img = p.image
+          ? '<div class="feed-img"><img src="' + esc(p.image) + '" alt="" loading="lazy"></div>'
+          : '';
+        var date = (p.time && fmt) ? fmt.format(new Date(p.time * 1000)) : '';
+        var text = p.text ? '<div class="feed-body"><p>' + esc(p.text).replace(/\n/g, '<br>') + '</p></div>' : '';
+        return '<a class="feed-card" href="' + esc(p.link || page) + '" target="_blank" rel="noopener">' +
+          head + (date ? '<time>' + date + '</time>' : '') + '</span></div>' +
+          text + img +
+          '</a>';
+      }).join('');
+      box.innerHTML = '<div class="feed-grid">' + html + '</div>';
+      /* Ha egy kép nem tölt be, a kerete se maradjon ott. */
+      box.querySelectorAll('.feed-img img').forEach(function (im) {
+        im.addEventListener('error', function () {
+          if (im.parentNode) { im.parentNode.parentNode.removeChild(im.parentNode); }
+        });
+      });
+      box.classList.add('is-loaded');
+    })
+    .catch(fallback);
 })();
