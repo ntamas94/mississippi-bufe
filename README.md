@@ -1,4 +1,4 @@
-# Mississippi Büfé & Motel Missouri — weboldal
+# Mississippi Büfé & Missouri Szálláshely — weboldal
 
 Többnyelvű (HU / EN / DE) PHP-oldal, keretrendszer nélkül. Nincs build lépés,
 nincs Composer, nincs adatbázis. Bármilyen PHP 8.1+ tárhelyen fut.
@@ -7,25 +7,29 @@ nincs Composer, nincs adatbázis. Bármilyen PHP 8.1+ tárhelyen fut.
 
 | Hely | Mi van benne |
 |---|---|
-| `index.php`, `etlap.php`, `motel.php`, `galeria.php`, `kapcsolat.php` | Az öt oldal |
+| `index.php`, `etlap.php`, `szallas.php`, `galeria.php`, `kapcsolat.php`, `esemenyek.php` | A hat oldal |
 | `foglalas.php` | A foglalási űrlap feldolgozója (e-mail + napló) |
+| `fb-feed.php`, `fb-img.php` | Facebook-posztok JSON-végpontja és képproxyja (az Események oldalhoz) |
 | `inc/config.php` | **Központi adatok**: telefon, cím, nyitvatartás, szobaárak, galéria lista, e-mail cím |
 | `inc/i18n.php` | Nyelvválasztás, session, segédfüggvények |
 | `inc/head.php`, `inc/footer.php` | Közös fejléc / lábléc |
-| `inc/booking-form.php` | Az űrlap HTML-je (motel és kapcsolat oldalon) |
+| `inc/booking-form.php` | Az űrlap HTML-je (szállás és kapcsolat oldalon) |
+| `inc/fb_feed.php` | A Facebook-oldal letöltése, feldolgozása, gyorsítótárazása |
 | `lang/hu.php`, `lang/en.php`, `lang/de.php` | Minden szöveg nyelvenként, **az étlap is itt van** |
 | `assets/app.css`, `assets/app.js` | Stílus (világos + sötét téma) és interakciók |
 | `images/` | Fotók |
-| `data/` | Ide kerül a `foglalasok.log` (a szerver hozza létre, `.htaccess` védi) |
-| `_regi-html/` | A korábbi statikus HTML változat — törölhető |
+| `admin/` | Böngészős szöveg- és árszerkesztő (lásd lent) |
+| `data/` | Napló, admin-mentések, FB-gyorsítótár (a szerver hozza létre, `.htaccess` védi) |
+| `Dockerfile`, `docker-compose.yml`, `docker/` | Docker-futtatás (PHP 8.4 + Apache) |
 
 ## Amit még ki kell tölteni
 
 1. **E-mail cím** — `inc/config.php`: `mail_to` (ide jönnek a foglalások) és `mail_from`
    (a saját domainen lévő feladó, különben sok tárhely nem küldi el).
-2. **Étlap árak** — `lang/hu.php`, `lang/en.php`, `lang/de.php` → `menu.groups`, minden tételhez
-   `'price' => 2490` formában. Ha megvan, töröld a `menu.todo` sárga dobozt (etlap.php, 25. sor környéke).
-3. **Szobaárak ellenőrzése** — `inc/config.php` → `room_prices` (a régi weboldalról származnak).
+2. **Étlap árak** — kitöltve. Áremeléskor a `lang/hu.php`, `lang/en.php`, `lang/de.php` →
+   `menu.groups` részben írd át (`'price' => 2490`), vagy böngészőből az `/admin/` felületen.
+3. **Szobaárak** — `inc/config.php` → `room_prices` (a tulajdonos 2026-os adatai: reggeli 3000 Ft/fő,
+   klíma 3500 Ft/éjszaka). Árváltozáskor itt vagy az `/admin/` felületen írd át.
 4. **Fotók** — a tulajdonos saját, friss fotói (2026. szeptember; JPEG q 72–74, progresszív,
    EXIF/GPS nélkül, egyenként ≤ 350 KB):
 
@@ -53,19 +57,19 @@ nincs Composer, nincs adatbázis. Bármilyen PHP 8.1+ tárhelyen fut.
 - Élő „Most nyitva / zárva” jelzés a fejlécben, percenként frissül (magyar idő szerint)
 - Sötét / világos téma kapcsoló, rendszerbeállítást követi, villanásmentes
 - Görgetési animációk, számláló, parallax hero, folyamatjelző, vissza-a-tetejére gomb
-- Étlap kategória-szűrő (ragadós chipek)
+- Étlap két fülön (Ételek / Italok), billentyűzettel is kezelhető, a fül a címben (`#`) megmarad
 - Képnéző (lightbox): nyilak, Esc, ujjhúzás mobilon
 - Foglalási űrlap: élő árbecslés, kliens+szerver oldali ellenőrzés, honeypot + időzítés + CSRF
   spam-védelem, e-mail küldés `mail()`-lel, minden kérés naplóban is (`data/foglalasok.log`)
 - Mobil hívósáv (Hívás / Foglalás) kis képernyőn
 - Google Térkép beágyazás, útvonaltervezés link
-- Schema.org (Restaurant + Motel) strukturált adat, OG meták
+- Schema.org (Restaurant + LodgingBusiness) strukturált adat, OG meták
 - Csökkentett mozgás (`prefers-reduced-motion`) tiszteletben tartva, nyomtatási stílus
 
 ## Helyi futtatás
 
 ```bash
-php -S localhost:8791 -t mississippi-bufe
+php -S localhost:8793 -t mississippi-bufe
 ```
 
 Windows / winget PHP esetén a teljes út:

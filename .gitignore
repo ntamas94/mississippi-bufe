@@ -2,9 +2,6 @@
 data/
 !data/.htaccess
 
-# régi statikus verzió archívuma
-_regi-html/
-
 # szerkesztő/OS szemét
 .DS_Store
 Thumbs.db
