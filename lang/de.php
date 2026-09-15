@@ -48,7 +48,7 @@ return [
         'meta_title' => 'Mississippi Büfé & Missouri Szálláshely — Egyházasrádóc, Ungarn',
         'meta_desc'  => 'Imbiss und Gästezimmer an der Straße 86 in Egyházasrádóc, zwischen Körmend und Szombathely. Pizza, warme Sandwiches, Bohnengulasch, Limonade, 6 Zimmer mit Bad.',
         'kicker'     => 'Egyházasrádóc · Straße 86',
-        'lead'       => 'Ein Halt an der Straße 86, auf halbem Weg zwischen Körmend und Szombathely. Warme Küche, handgezogene Pizza, schattige Terrasse — und sechs Zimmer, wenn Sie über Nacht bleiben.',
+        'lead'       => 'Ein Halt an der Straße 86, auf halbem Weg zwischen Körmend und Szombathely. Warme Küche, Pizza, schattige Terrasse — und sechs Zimmer, wenn Sie über Nacht bleiben.',
         'cta_book'   => 'Zimmer buchen',
         'cta_menu'   => 'Zur Speisekarte',
         'about_title'=> 'Ein Familienbetrieb an der Straße',
@@ -63,12 +63,12 @@ return [
         'buffet_tag'  => 'Imbiss',
         'buffet_title'=> 'Eine Küche, die nicht warten lässt',
         'buffet_text' => 'Elf Pizzasorten, warme Sandwiches, Bohnengulasch und Frühstück — dazu Limonade, Bier vom Fass und Kaffee. Auch zum Mitnehmen, wenn es schnell gehen muss.',
-        'buffet_list' => ['Handgezogene Pizzen', 'Täglich warme Gerichte', 'Nichtraucherterrasse', 'Zum Mitnehmen'],
+        'buffet_list' => ['11 Pizzasorten', 'Täglich warme Gerichte', 'Nichtraucherterrasse', 'Zum Mitnehmen'],
         'buffet_btn'  => 'Speisekarte',
         'motel_tag'   => 'Zimmer',
         'motel_title' => 'Zimmer mit eigenem Eingang',
         'motel_text'  => 'Angenehme Zimmer zu fairen Preisen — Anreise rund um die Uhr möglich. Mit oder ohne Frühstück.',
-        'motel_list'  => ['Zimmer für 1–4 Personen, eigener Eingang', 'Bad, separates WC, TV', 'Umzäunter Parkplatz, Rasenhof', 'Haustiere willkommen'],
+        'motel_list'  => ['Zimmer für 1–4 Personen, eigener Eingang', 'Bad, separates WC, TV', 'Umzäunter Parkplatz', 'Haustiere willkommen'],
         'motel_btn'   => 'Zimmer und Preise',
         'terrace_tag'   => 'Terrasse',
         'terrace_title' => 'Im Sommer draußen am Gartenteich',
@@ -112,7 +112,7 @@ return [
         'groups' => [
             [
                 'title' => 'Pizzen',
-                'note'  => 'Handgezogener Teig, 32 cm.',
+                'note'  => 'Alle Pizzen 32 cm.',
                 'items' => [
                     ['name' => 'Käse', 'price' => 2000],
                     ['name' => 'Käse & Schinken', 'price' => 2300],

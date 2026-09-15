@@ -48,7 +48,7 @@ return [
         'meta_title' => 'Mississippi Büfé & Missouri Szálláshely — Egyházasrádóc, Hungary',
         'meta_desc'  => 'Roadside buffet and guest rooms on Route 86 in Egyházasrádóc, between Körmend and Szombathely. Pizza, hot sandwiches, bean goulash, lemonade, 6 en-suite rooms.',
         'kicker'     => 'Egyházasrádóc · Route 86',
-        'lead'       => 'A stop on Route 86, halfway between Körmend and Szombathely. Hot food, hand-stretched pizza, a shaded terrace — and six rooms if you stay the night.',
+        'lead'       => 'A stop on Route 86, halfway between Körmend and Szombathely. Hot food, pizza, a shaded terrace — and six rooms if you stay the night.',
         'cta_book'   => 'Book a room',
         'cta_menu'   => 'See the menu',
         'about_title'=> 'A family place by the road',
@@ -63,12 +63,12 @@ return [
         'buffet_tag'  => 'Buffet',
         'buffet_title'=> 'A kitchen that keeps up',
         'buffet_text' => 'Eleven kinds of pizza, hot sandwiches, bean goulash and breakfast — with lemonade, draught beer and coffee. Takeaway available if you are in a hurry.',
-        'buffet_list' => ['Hand-stretched pizzas', 'Daily hot dishes', 'Non-smoking terrace', 'Takeaway'],
+        'buffet_list' => ['11 kinds of pizza', 'Daily hot dishes', 'Non-smoking terrace', 'Takeaway'],
         'buffet_btn'  => 'Menu',
         'motel_tag'   => 'Rooms',
         'motel_title' => 'Rooms with private entrances',
         'motel_text'  => 'Comfortable rooms at a fair price — arrive any time, day or night. With or without breakfast.',
-        'motel_list'  => ['Rooms for 1–4 guests, private entrances', 'Bathroom, separate WC, TV', 'Gated parking, grassy yard', 'Pets welcome'],
+        'motel_list'  => ['Rooms for 1–4 guests, private entrances', 'Bathroom, separate WC, TV', 'Gated parking', 'Pets welcome'],
         'motel_btn'   => 'Rooms and rates',
         'terrace_tag'   => 'Terrace',
         'terrace_title' => 'In summer, outside by the garden pond',
@@ -112,7 +112,7 @@ return [
         'groups' => [
             [
                 'title' => 'Pizzas',
-                'note'  => 'Hand-stretched dough, 32 cm.',
+                'note'  => 'All pizzas are 32 cm.',
                 'items' => [
                     ['name' => 'Cheese', 'price' => 2000],
                     ['name' => 'Cheese & ham', 'price' => 2300],
