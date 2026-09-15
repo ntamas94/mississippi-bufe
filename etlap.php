@@ -20,8 +20,7 @@ require __DIR__ . '/inc/head.php';
 <section class="section">
   <div class="wrap">
 
-    <?php /* Az árakat a lang/*.php étlapcsoportjaiban lehet megadni: 'price' => 2490 */ ?>
-    <div class="note" data-reveal style="margin-bottom:28px"><?= e(t('menu.todo')) ?></div>
+    <?php /* Árak a lang/*.php étlapcsoportjaiban: 'price' => 2490 vagy 'price_text' => '150 Ft / dl' */ ?>
 
     <div class="menu-filter" role="tablist" aria-label="<?= e(t('menu.title')) ?>">
       <button class="chip is-active" type="button" data-filter="all"><?= e(t('menu.all')) ?></button>
@@ -48,6 +47,8 @@ require __DIR__ . '/inc/head.php';
           <span class="dots" aria-hidden="true"></span>
           <?php if (isset($item['price'])): ?>
           <span class="price"><?= e(ft((int) $item['price'])) ?></span>
+          <?php elseif (isset($item['price_text'])): ?>
+          <span class="price"><?= e($item['price_text']) ?></span>
           <?php else: ?>
           <span class="price price--todo">••• Ft</span>
           <?php endif; ?>

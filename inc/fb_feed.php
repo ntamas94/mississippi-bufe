@@ -10,7 +10,6 @@
 
 const FB_FEED_TTL   = 21600; // 6 óra
 const FB_FEED_LIMIT = 8;
-
 function fb_feed_cache_path(): string {
     return __DIR__ . '/../data/fb_feed.json';
 }

@@ -38,15 +38,15 @@ $CFG_BASE = [
         0 => ['16:00', '21:00'],
     ],
 
-    // Szobaárak forintban: fő => [reggeli nélkül, reggelivel]
-    // A reggeli 500 Ft/fő (kenyér, tea, sonka, vaj, dzsem) — nem kötelező.
+    // Szobaárak forintban, egy éjszaka (18:00–10:00): fő => [reggeli nélkül, reggelivel]
+    // Reggeli 3000 Ft/fő a büfében 8–10 között (nem kötelező). Klíma külön: 3500 Ft/éjszaka.
     'room_prices' => [
-        1 => [4500, 5000],
-        2 => [7800, 8800],
-        3 => [9200, 10700],
-        4 => [10500, 12500],
+        1 => [12000, 15000],
+        2 => [18000, 24000],
+        3 => [24000, 33000],
+        4 => [30000, 42000],
     ],
-    'breakfast_per_person' => 500,
+    'breakfast_per_person' => 3000,
 
     'rooms_total' => 6,
     'capacity'    => 25,
