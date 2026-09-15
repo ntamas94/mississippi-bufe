@@ -26,11 +26,26 @@ nincs Composer, nincs adatbázis. Bármilyen PHP 8.1+ tárhelyen fut.
 2. **Étlap árak** — `lang/hu.php`, `lang/en.php`, `lang/de.php` → `menu.groups`, minden tételhez
    `'price' => 2490` formában. Ha megvan, töröld a `menu.todo` sárga dobozt (etlap.php, 25. sor környéke).
 3. **Szobaárak ellenőrzése** — `inc/config.php` → `room_prices` (a régi weboldalról származnak).
-4. **Fotók** — 12 kép van bekötve: a Facebook-oldal nyilvános fotói (épület, terasz ×3, pizza,
-   büfé homlokzat — ezek jó felbontásúak) + az értékelőoldalak kollázsaiból kivágott kisebb képek
-   (belső, szoba, fürdő, bejárat, udvar — ezeket érdemes saját, nagyobb fotóra cserélni ugyanazon a néven).
+4. **Fotók** — a tulajdonos saját, friss fotói (2026. szeptember; JPEG q 72–74, progresszív,
+   EXIF/GPS nélkül, egyenként ≤ 350 KB):
+
+   | Fájl | Méret | Mi látszik | Hol van használva |
+   |---|---|---|---|
+   | `to-tukrozodes.jpg` | 1920×1440 | A piros büfé a kerti tóban tükröződve, alkonyatkor | hero háttér (`app.css`), galéria 1. (széles) |
+   | `bufe-tabla.jpg` | 1600×1200 | Büfé + az út menti „Mississipi Büfé – Pizza és Babgulyás – Missouri Panzió” tábla | OG-kép (`inc/head.php`), galéria |
+   | `terasz-to.jpg` | 1600×1200 | Padok Kőbányai-ernyők alatt, mögötte a tó és a büfé bejárata | főoldal terasz nagy kép, galéria |
+   | `kert-to.jpg` | 1600×1200 | Kert banánfával, tóval, fa lugassal | főoldal terasz kis kép, galéria |
+   | `bufe-to.jpg` | 1050×1400 (álló) | A büfé tóparti sarka | galéria (ne legyen az 1. vagy 6. széles helyen) |
+   | `motel-epulet.jpg` | 1600×900 | A szálláshely épülete: 6 számozott szoba tornáccal, napelemek, aszfaltos parkoló | főoldal szállás-kártya, `szallas.php`, galéria 6. (széles) |
+   | `terasz-jatszoter.jpg` | 1600×1200 | Térkövezett terasz padokkal, mögötte játszótér (csúszda, hinta) | főoldal terasz kis kép, galéria |
+   | `kerti-to-vizeses.jpg` | 1600×1200 | A tó közelről: kis vízesés, béka szobor, halak | galéria |
+
+   Mellettük a régebbi képek: a Facebook-oldal nyilvános fotói (épület, terasz, pizza, büfé homlokzat)
+   és az értékelőoldalak kollázsaiból kivágott kisebb képek (belső, szoba, fürdő, bejárat, udvar —
+   ezeket érdemes saját, nagyobb fotóra cserélni ugyanazon a néven).
    Új kép: fájl az `images` mappába, felvétel az `inc/config.php` → `gallery` listába, felirat a
-   `lang/*.php` `gallery` részében. Rendszámot, arcot ne hagyj a képen.
+   `lang/*.php` `gallery` részében. A galéria 1. és 6. képe dupla széles, 16:9-re vágva — oda fekvő
+   kép kerüljön. Rendszámot, arcot ne hagyj a képen.
 
 ## Funkciók
 

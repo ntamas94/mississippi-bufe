@@ -33,6 +33,8 @@
     if (headerEl) document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
   };
   setHeaderVar();
+  // a fejléc min-height átmenete a görgetés után ér véget — utána még egyszer mérünk
+  if (headerEl) headerEl.addEventListener('transitionend', setHeaderVar);
 
   var onFrame = function () {
     ticking = false;
@@ -92,24 +94,47 @@
     counters.forEach(function (el) { countIo.observe(el); });
   }
 
-  /* ---------- étlap-szűrő ---------- */
-  var filter = document.querySelector('.menu-filter');
-  if (filter) {
-    var groups = document.querySelectorAll('.menu-group[data-group]');
-    filter.addEventListener('click', function (ev) {
-      var chip = ev.target.closest('.chip');
-      if (!chip) return;
-      filter.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
-      chip.classList.add('is-active');
-      var key = chip.dataset.filter;
-      groups.forEach(function (g) {
-        g.hidden = key !== 'all' && g.dataset.group !== key;
+  /* ---------- étlap: Ételek / Italok fülek ---------- */
+  var menuTabs = document.querySelector('.menu-tabs');
+  if (menuTabs) {
+    var tabBtns = Array.prototype.slice.call(menuTabs.querySelectorAll('.menu-tab'));
+    var menuPanels = document.querySelectorAll('.menu-panel[data-panel]');
+    var showMenuTab = function (btn, opts) {
+      opts = opts || {};
+      tabBtns.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
       });
-      if (key !== 'all') {
-        var target = document.querySelector('.menu-group[data-group="' + key + '"]');
-        if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      menuPanels.forEach(function (p) { p.hidden = p.dataset.panel !== btn.dataset.tab; });
+      if (opts.hash && history.replaceState) history.replaceState(null, '', '#' + btn.dataset.hash);
+      if (opts.scroll) {
+        var panel = document.getElementById('panel-' + btn.dataset.tab);
+        if (panel && panel.getBoundingClientRect().top < menuTabs.getBoundingClientRect().bottom) {
+          panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        }
       }
+      if (opts.focus) btn.focus();
+    };
+    menuTabs.addEventListener('click', function (ev) {
+      var btn = ev.target.closest('.menu-tab');
+      if (btn) showMenuTab(btn, { hash: true, scroll: true });
     });
+    menuTabs.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+      var i = tabBtns.indexOf(document.activeElement);
+      if (i < 0) return;
+      ev.preventDefault();
+      var step = ev.key === 'ArrowRight' ? 1 : -1;
+      showMenuTab(tabBtns[(i + step + tabBtns.length) % tabBtns.length], { hash: true, focus: true });
+    });
+    var syncMenuHash = function () {
+      var fromHash = tabBtns.filter(function (b) { return '#' + b.dataset.hash === location.hash; })[0];
+      if (fromHash) showMenuTab(fromHash);
+    };
+    syncMenuHash();
+    window.addEventListener('hashchange', syncMenuHash);
   }
 
   /* ---------- mobil menü ---------- */

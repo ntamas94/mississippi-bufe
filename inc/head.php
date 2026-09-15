@@ -36,12 +36,12 @@ $navItems = [
 <meta property="og:type" content="website">
 <meta property="og:title" content="<?= e($meta_title) ?>">
 <meta property="og:description" content="<?= e($meta_desc) ?>">
-<meta property="og:image" content="images/epulet.jpg">
+<meta property="og:image" content="images/bufe-tabla.jpg">
 <meta property="og:locale" content="<?= e(t('locale')) ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="assets/app.css?v=7">
+<link rel="stylesheet" href="assets/app.css?v=8">
 <script>
   // villanás nélküli téma: még a CSS előtt beállítjuk
   (function () {
@@ -65,7 +65,7 @@ $navItems = [
     'servesCuisine' => 'Hungarian',
     'priceRange'  => '$',
     'telephone'   => $CFG['phone_raw'],
-    'image'       => 'images/epulet.jpg',
+    'image'       => 'images/bufe-tabla.jpg',
     'address'     => [
         '@type'           => 'PostalAddress',
         'streetAddress'   => $CFG['street'],

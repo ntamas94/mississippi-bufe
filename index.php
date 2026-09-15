@@ -107,7 +107,7 @@ require __DIR__ . '/inc/head.php';
 
       <article class="card" data-reveal data-delay="1">
         <div class="card-media">
-          <img src="images/motel-udvar.jpg" alt="<?= e(t('gallery.g_motel')) ?>" loading="lazy" width="1400" height="1050">
+          <img src="images/motel-epulet.jpg" alt="<?= e(t('gallery.g_motel_front')) ?>" loading="lazy" width="1600" height="900">
         </div>
         <div class="card-body">
           <span class="tag"><?= e(t('home.motel_tag')) ?></span>
@@ -138,18 +138,18 @@ require __DIR__ . '/inc/head.php';
       </div>
       <div class="gallery" data-reveal data-delay="1" style="grid-template-columns:1fr 1fr">
         <figure style="grid-column:1 / -1">
-          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace')) ?>">
-            <img src="images/terasz.jpg" alt="<?= e(t('gallery.g_terrace')) ?>" loading="lazy" width="1280" height="960">
+          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace_pond')) ?>">
+            <img src="images/terasz-to.jpg" alt="<?= e(t('gallery.g_terrace_pond')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
         <figure>
-          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace_tables')) ?>">
-            <img src="images/terasz-asztalok.jpg" alt="<?= e(t('gallery.g_terrace_tables')) ?>" loading="lazy" width="1385" height="520">
+          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_garden')) ?>">
+            <img src="images/kert-to.jpg" alt="<?= e(t('gallery.g_garden')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
         <figure>
-          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_buffet')) ?>">
-            <img src="images/bufe-epulet.jpg" alt="<?= e(t('gallery.g_buffet')) ?>" loading="lazy" width="500" height="374">
+          <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace_play')) ?>">
+            <img src="images/terasz-jatszoter.jpg" alt="<?= e(t('gallery.g_terrace_play')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
       </div>

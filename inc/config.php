@@ -52,6 +52,14 @@ $CFG_BASE = [
     'capacity'    => 25,
 
     'gallery' => [
+        ['file' => 'to-tukrozodes.jpg',    'key' => 'g_pond_house'],
+        ['file' => 'bufe-tabla.jpg',       'key' => 'g_sign'],
+        ['file' => 'terasz-to.jpg',        'key' => 'g_terrace_pond'],
+        ['file' => 'kert-to.jpg',          'key' => 'g_garden'],
+        ['file' => 'bufe-to.jpg',          'key' => 'g_pond_corner'],
+        ['file' => 'motel-epulet.jpg',     'key' => 'g_motel_front'],
+        ['file' => 'terasz-jatszoter.jpg', 'key' => 'g_terrace_play'],
+        ['file' => 'kerti-to-vizeses.jpg', 'key' => 'g_waterfall'],
         ['file' => 'epulet.jpg',          'key' => 'g_building'],
         ['file' => 'terasz.jpg',          'key' => 'g_terrace'],
         ['file' => 'pizza.jpg',           'key' => 'g_pizza'],
