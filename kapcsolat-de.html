@@ -198,7 +198,7 @@
               <span class="day">Montag</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li>
+                        <li class="is-today">
               <span class="day">Dienstag</span>
               <span class="time">10:00 – 22:00</span>
             </li>
@@ -206,7 +206,7 @@
               <span class="day">Mittwoch</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li class="is-today">
+                        <li>
               <span class="day">Donnerstag</span>
               <span class="time">10:00 – 22:00</span>
             </li>
@@ -260,13 +260,13 @@
   <h2>Buchungsanfrage</h2>
   <p class="lead">Füllen Sie das Formular aus, wir antworten per E-Mail. Bei dringenden Anliegen rufen Sie bitte an.</p>
 
-  <form id="booking-form" action="foglalas.html" method="post" novalidate
-        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
+  <form id="booking-form" action="foglalas.php" method="post" novalidate
+        data-prices='{"1":[12000,15000],"2":[18000,24000],"3":[24000,33000],"4":[30000,42000]}'
         data-texts='{"required":"Pflichtfeld","badEmail":"Keine gültige E-Mail-Adresse","badDate":"Bitte Anreisedatum angeben","sending":"Wird gesendet …","success":"Danke! Wir haben Ihre Anfrage erhalten und melden uns in Kürze.","error":"Senden fehlgeschlagen. Bitte rufen Sie uns an."}'>
 
-    <input type="hidden" name="csrf" value="41c1d94858ac5144c5c58bd2bd53425a">
+    <input type="hidden" name="csrf" value="b9ceff29543a2d661282af9785c0abb6">
     <input type="hidden" name="lang" value="de">
-    <input type="hidden" name="ts" value="1787851664">
+    <input type="hidden" name="ts" value="1789497638">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -290,7 +290,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Anreise *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-09-16" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -323,7 +323,7 @@
       </div>
       <div class="field field--wide check">
         <input type="checkbox" id="f-breakfast" name="breakfast" value="1">
-        <label for="f-breakfast">Mit Frühstück (500 Ft/Person)</label>
+        <label for="f-breakfast">Mit Frühstück (3000 Ft/Person)</label>
       </div>
       <div class="field field--wide">
         <label for="f-message">Nachricht</label>
@@ -381,7 +381,7 @@
             <span>Montag</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Dienstag</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -389,7 +389,7 @@
             <span>Mittwoch</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Donnerstag</span>
             <span>10:00 – 22:00</span>
           </li>

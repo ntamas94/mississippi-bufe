@@ -198,7 +198,7 @@
               <span class="day">Hétfő</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li>
+                        <li class="is-today">
               <span class="day">Kedd</span>
               <span class="time">10:00 – 22:00</span>
             </li>
@@ -206,7 +206,7 @@
               <span class="day">Szerda</span>
               <span class="time">10:00 – 22:00</span>
             </li>
-                        <li class="is-today">
+                        <li>
               <span class="day">Csütörtök</span>
               <span class="time">10:00 – 22:00</span>
             </li>
@@ -260,13 +260,13 @@
   <h2>Foglalási kérés</h2>
   <p class="lead">Töltsd ki az űrlapot, és e-mailben visszajelzünk. Sürgős esetben inkább telefonálj.</p>
 
-  <form id="booking-form" action="foglalas.html" method="post" novalidate
-        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
+  <form id="booking-form" action="foglalas.php" method="post" novalidate
+        data-prices='{"1":[12000,15000],"2":[18000,24000],"3":[24000,33000],"4":[30000,42000]}'
         data-texts='{"required":"Kötelező mező","badEmail":"Nem érvényes e-mail cím","badDate":"Add meg az érkezés napját","sending":"Küldés…","success":"Köszönjük! Megkaptuk a kérést, hamarosan válaszolunk.","error":"A küldés nem sikerült. Kérjük, hívj minket telefonon."}'>
 
-    <input type="hidden" name="csrf" value="678a24e27c8a0821f490a641e5a9b2d1">
+    <input type="hidden" name="csrf" value="49cabb89fa129e68822b961dbe601a45">
     <input type="hidden" name="lang" value="hu">
-    <input type="hidden" name="ts" value="1787851664">
+    <input type="hidden" name="ts" value="1789497638">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -290,7 +290,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Érkezés *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-09-16" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -323,7 +323,7 @@
       </div>
       <div class="field field--wide check">
         <input type="checkbox" id="f-breakfast" name="breakfast" value="1">
-        <label for="f-breakfast">Reggelit kérek (500 Ft/fő)</label>
+        <label for="f-breakfast">Reggelit kérek (3000 Ft/fő)</label>
       </div>
       <div class="field field--wide">
         <label for="f-message">Megjegyzés</label>
@@ -381,7 +381,7 @@
             <span>Hétfő</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Kedd</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -389,7 +389,7 @@
             <span>Szerda</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Csütörtök</span>
             <span>10:00 – 22:00</span>
           </li>

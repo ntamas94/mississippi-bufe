@@ -180,7 +180,7 @@
       <div data-reveal>
         <h2>About the rooms</h2>
         <p>We have six rooms with private entrances and 25 beds in total. Each room has its own bathroom, a separate toilet, a TV and internet access. Rooms sleep 1–4 people. Smoking is not allowed in the rooms.</p>
-        <p>The buffet next to the rooms takes care of meals. Breakfast is optional — 500 Ft per person on request (bread, tea, ham, butter, jam). Outside buffet hours, ring the bell at the buffet entrance for your room key.</p>
+        <p>The buffet next to the rooms takes care of meals. Breakfast is optional — 3000 Ft per person, served in the buffet between 8:00 and 10:00 (bread, ham, butter, jam, tea). Outside buffet hours, ring the bell at the buffet entrance for your room key.</p>
         <ul class="ticks">
                     <li>6 rooms, 1–4 guests each</li>
                     <li>Own bathroom and separate WC</li>
@@ -219,7 +219,7 @@
   <div class="wrap">
     <div data-reveal>
       <h2>Rates</h2>
-      <p class="lead">Rates are per room, per night. Breakfast is optional at 500 Ft per person.</p>
+      <p class="lead">Rates are per room, per night (18:00 to 10:00 the next day). Breakfast is optional at 3000 Ft per person. Air conditioning is not included: 3500 Ft per night.</p>
     </div>
 
     <div class="table-wrap" data-reveal style="margin-top:26px">
@@ -234,23 +234,23 @@
         <tbody>
                     <tr>
             <td data-label="Number of guests">1 guest(s)</td>
-            <td class="num" data-label="Without breakfast">4 500 Ft</td>
-            <td class="num" data-label="With breakfast">5 000 Ft</td>
+            <td class="num" data-label="Without breakfast">12 000 Ft</td>
+            <td class="num" data-label="With breakfast">15 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Number of guests">2 guest(s)</td>
-            <td class="num" data-label="Without breakfast">7 800 Ft</td>
-            <td class="num" data-label="With breakfast">8 800 Ft</td>
+            <td class="num" data-label="Without breakfast">18 000 Ft</td>
+            <td class="num" data-label="With breakfast">24 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Number of guests">3 guest(s)</td>
-            <td class="num" data-label="Without breakfast">9 200 Ft</td>
-            <td class="num" data-label="With breakfast">10 700 Ft</td>
+            <td class="num" data-label="Without breakfast">24 000 Ft</td>
+            <td class="num" data-label="With breakfast">33 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Number of guests">4 guest(s)</td>
-            <td class="num" data-label="Without breakfast">10 500 Ft</td>
-            <td class="num" data-label="With breakfast">12 500 Ft</td>
+            <td class="num" data-label="Without breakfast">30 000 Ft</td>
+            <td class="num" data-label="With breakfast">42 000 Ft</td>
           </tr>
                   </tbody>
       </table>
@@ -266,13 +266,13 @@
   <h2>Booking request</h2>
   <p class="lead">Fill in the form and we will reply by email. For anything urgent, please call instead.</p>
 
-  <form id="booking-form" action="foglalas.html" method="post" novalidate
-        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
+  <form id="booking-form" action="foglalas.php" method="post" novalidate
+        data-prices='{"1":[12000,15000],"2":[18000,24000],"3":[24000,33000],"4":[30000,42000]}'
         data-texts='{"required":"Required field","badEmail":"Not a valid email address","badDate":"Please give your arrival date","sending":"Sending…","success":"Thank you! We have received your request and will reply shortly.","error":"Sending failed. Please give us a call instead."}'>
 
-    <input type="hidden" name="csrf" value="a81ac9c160087d88398758705790242c">
+    <input type="hidden" name="csrf" value="90ccbc5d163f521e2036526a61f13f33">
     <input type="hidden" name="lang" value="en">
-    <input type="hidden" name="ts" value="1787851664">
+    <input type="hidden" name="ts" value="1789497637">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -296,7 +296,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Arrival *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-09-16" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -329,7 +329,7 @@
       </div>
       <div class="field field--wide check">
         <input type="checkbox" id="f-breakfast" name="breakfast" value="1">
-        <label for="f-breakfast">Breakfast, please (500 Ft/person)</label>
+        <label for="f-breakfast">Breakfast, please (3000 Ft/person)</label>
       </div>
       <div class="field field--wide">
         <label for="f-message">Message</label>
@@ -388,7 +388,7 @@
             <span>Monday</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Tuesday</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -396,7 +396,7 @@
             <span>Wednesday</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Thursday</span>
             <span>10:00 – 22:00</span>
           </li>

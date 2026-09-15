@@ -180,7 +180,7 @@
       <div data-reveal>
         <h2>A szobákról</h2>
         <p>A szálláshely hat külön bejáratú szobával működik, összesen 25 férőhellyel. Mindegyik szobához saját fürdőszoba és külön mellékhelyiség tartozik, televízióval és internetezési lehetőséggel. A szobák 1–4 fő elhelyezésére alkalmasak. A szobákban a dohányzás nem megengedett.</p>
-        <p>A szálláshely mellett működik a büfé, ahol az étkezés megoldható. Kötelező reggeli nincs — kérésre 500 Ft/fő áron adjuk (kenyér, tea, sonka, vaj, dzsem). Nyitás előtt és zárás után a büfé bejáratánál lévő csengővel kérhető a szobakulcs.</p>
+        <p>A szálláshely mellett működik a büfé, ahol az étkezés megoldható. Kötelező reggeli nincs — kérésre 3000 Ft/fő áron, 8 és 10 óra között a büfében (kenyér, sonka, vaj, dzsem, tea). Nyitás előtt és zárás után a büfé bejáratánál lévő csengővel kérhető a szobakulcs.</p>
         <ul class="ticks">
                     <li>6 külön bejáratú szoba, 1–4 fő / szoba (összesen 25 fő)</li>
                     <li>Saját fürdőszoba és külön WC</li>
@@ -188,7 +188,7 @@
                     <li>24 órás portaszolgálat — csengő a büfé bejáratánál</li>
                     <li>Zárt parkoló, füves udvar és kert</li>
                     <li>Kutya, macska bevihető</li>
-                    <li>Reggeli kérésre: 500 Ft/fő</li>
+                    <li>Reggeli kérésre: 3000 Ft/fő (8–10 óra)</li>
                     <li>Törzsvendégeknek kedvezmény</li>
                   </ul>
       </div>
@@ -221,7 +221,7 @@
   <div class="wrap">
     <div data-reveal>
       <h2>Árak</h2>
-      <p class="lead">Az árak szobánként, egy éjszakára értendők. A reggeli nem kötelező — 500 Ft/fő áron kérhető.</p>
+      <p class="lead">Az árak szobánként, egy éjszakára (18:00-tól másnap 10:00-ig) értendők. A reggeli nem kötelező — 3000 Ft/fő. A klíma használata nincs benne az árban: 3500 Ft/éjszaka.</p>
     </div>
 
     <div class="table-wrap" data-reveal style="margin-top:26px">
@@ -236,23 +236,23 @@
         <tbody>
                     <tr>
             <td data-label="Vendégek száma">1 fő</td>
-            <td class="num" data-label="Reggeli nélkül">4 500 Ft</td>
-            <td class="num" data-label="Reggelivel">5 000 Ft</td>
+            <td class="num" data-label="Reggeli nélkül">12 000 Ft</td>
+            <td class="num" data-label="Reggelivel">15 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Vendégek száma">2 fő</td>
-            <td class="num" data-label="Reggeli nélkül">7 800 Ft</td>
-            <td class="num" data-label="Reggelivel">8 800 Ft</td>
+            <td class="num" data-label="Reggeli nélkül">18 000 Ft</td>
+            <td class="num" data-label="Reggelivel">24 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Vendégek száma">3 fő</td>
-            <td class="num" data-label="Reggeli nélkül">9 200 Ft</td>
-            <td class="num" data-label="Reggelivel">10 700 Ft</td>
+            <td class="num" data-label="Reggeli nélkül">24 000 Ft</td>
+            <td class="num" data-label="Reggelivel">33 000 Ft</td>
           </tr>
                     <tr>
             <td data-label="Vendégek száma">4 fő</td>
-            <td class="num" data-label="Reggeli nélkül">10 500 Ft</td>
-            <td class="num" data-label="Reggelivel">12 500 Ft</td>
+            <td class="num" data-label="Reggeli nélkül">30 000 Ft</td>
+            <td class="num" data-label="Reggelivel">42 000 Ft</td>
           </tr>
                   </tbody>
       </table>
@@ -268,13 +268,13 @@
   <h2>Foglalási kérés</h2>
   <p class="lead">Töltsd ki az űrlapot, és e-mailben visszajelzünk. Sürgős esetben inkább telefonálj.</p>
 
-  <form id="booking-form" action="foglalas.html" method="post" novalidate
-        data-prices='{"1":[4500,5000],"2":[7800,8800],"3":[9200,10700],"4":[10500,12500]}'
+  <form id="booking-form" action="foglalas.php" method="post" novalidate
+        data-prices='{"1":[12000,15000],"2":[18000,24000],"3":[24000,33000],"4":[30000,42000]}'
         data-texts='{"required":"Kötelező mező","badEmail":"Nem érvényes e-mail cím","badDate":"Add meg az érkezés napját","sending":"Küldés…","success":"Köszönjük! Megkaptuk a kérést, hamarosan válaszolunk.","error":"A küldés nem sikerült. Kérjük, hívj minket telefonon."}'>
 
-    <input type="hidden" name="csrf" value="61f72f55e1deadb1b42c260909cc838f">
+    <input type="hidden" name="csrf" value="caa97611d89c7f3a3eeda299711d78f5">
     <input type="hidden" name="lang" value="hu">
-    <input type="hidden" name="ts" value="1787851663">
+    <input type="hidden" name="ts" value="1789497637">
     <div class="hp" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -298,7 +298,7 @@
       </div>
       <div class="field">
         <label for="f-arrival">Érkezés *</label>
-        <input type="date" id="f-arrival" name="arrival" min="2026-08-28" required>
+        <input type="date" id="f-arrival" name="arrival" min="2026-09-16" required>
         <span class="error"></span>
       </div>
       <div class="field">
@@ -331,7 +331,7 @@
       </div>
       <div class="field field--wide check">
         <input type="checkbox" id="f-breakfast" name="breakfast" value="1">
-        <label for="f-breakfast">Reggelit kérek (500 Ft/fő)</label>
+        <label for="f-breakfast">Reggelit kérek (3000 Ft/fő)</label>
       </div>
       <div class="field field--wide">
         <label for="f-message">Megjegyzés</label>
@@ -390,7 +390,7 @@
             <span>Hétfő</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li>
+                    <li class="is-today">
             <span>Kedd</span>
             <span>10:00 – 22:00</span>
           </li>
@@ -398,7 +398,7 @@
             <span>Szerda</span>
             <span>10:00 – 22:00</span>
           </li>
-                    <li class="is-today">
+                    <li>
             <span>Csütörtök</span>
             <span>10:00 – 22:00</span>
           </li>
