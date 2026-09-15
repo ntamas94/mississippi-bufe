@@ -12,12 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Étlap — Mississippi Büfé, Egyházasrádóc">
 <meta property="og:description" content="A Mississippi Büfé étlapja árakkal: pizzák, melegszendvicsek, babgulyás, reggeli, limonádé, sörök, borok, röviditalok. Elvitelre is.">
-<meta property="og:image" content="images/epulet.jpg">
+<meta property="og:image" content="images/bufe-tabla.jpg">
 <meta property="og:locale" content="hu_HU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="assets/app.css?v=7">
+<link rel="stylesheet" href="assets/app.css?v=8">
 <script>
   // villanás nélküli téma: még a CSS előtt beállítjuk
   (function () {
@@ -44,7 +44,7 @@
     "servesCuisine": "Hungarian",
     "priceRange": "$",
     "telephone": "+3694950348",
-    "image": "images/epulet.jpg",
+    "image": "images/bufe-tabla.jpg",
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Alkotmány utca 38.",
@@ -173,365 +173,446 @@
 <section class="section">
   <div class="wrap">
 
-    
-    <div class="menu-filter" role="tablist" aria-label="Étlap">
-      <button class="chip is-active" type="button" data-filter="all">Összes</button>
-            <button class="chip" type="button" data-filter="g0">Pizzák</button>
-            <button class="chip" type="button" data-filter="g1">Melegszendvicsek</button>
-            <button class="chip" type="button" data-filter="g2">Egyéb ételek</button>
-            <button class="chip" type="button" data-filter="g3">Üdítők</button>
-            <button class="chip" type="button" data-filter="g4">Sörök</button>
-            <button class="chip" type="button" data-filter="g5">Borok</button>
-            <button class="chip" type="button" data-filter="g6">Kávé, tea</button>
-            <button class="chip" type="button" data-filter="g7">Limonádé</button>
-            <button class="chip" type="button" data-filter="g8">Rövid italok</button>
+    <div class="menu-tabs" role="tablist" aria-label="Étlap">
+            <button class="menu-tab is-active" type="button" role="tab"
+              id="tab-food" aria-controls="panel-food"
+              aria-selected="true" tabindex="0"
+              data-tab="food" data-hash="etelek">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v7a2 2 0 0 0 4 0V2M8 11v11"/><path d="M18 22V2c-2.2 1.5-3 4.5-3 8 0 2 1 3 3 3"/></svg>
+        Ételek      </button>
+            <button class="menu-tab" type="button" role="tab"
+              id="tab-drinks" aria-controls="panel-drinks"
+              aria-selected="false" tabindex="-1"
+              data-tab="drinks" data-hash="italok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14l-1.5 16a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2L5 4z"/><path d="M5.6 9h12.8"/></svg>
+        Italok      </button>
           </div>
 
-        <div class="menu-group" data-group="g0" data-reveal>
-      <div class="menu-group-head">
-        <h2>Pizzák</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Minden pizza 32 cm-es.</span>
+        <div class="menu-panel" id="panel-food" role="tabpanel" aria-labelledby="tab-food" data-panel="food">
+      <div class="menu-cards">
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Pizzák</h2>
+                        <p class="menu-card-note">Minden pizza 32 cm-es.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, gombás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, kukoricás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, szalámis                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás, gombás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás, kukoricás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Hawaii                <span class="desc">sajt, sonka, ananász</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás, gombás, kukoricás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Paraszt                <span class="desc">sajt, sonka, gomba, kukorica, szalámi, bacon, hagyma, tükörtojás</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 200 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Őrségi tökmagos                <span class="desc">tejfölös alap, sajt, tökmagolaj, bacon, pirított tökmag</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 200 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Plusz feltét                <span class="desc">sonka, gomba, kukorica, szalámi, ananász, bacon, hagyma, tükörtojás, pirított tökmag</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft / feltét</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Doboz elvitelre                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Melegszendvicsek</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">700 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, gombás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">700 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, szalámis                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">850 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Sajtos, sonkás, gombás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">950 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Plusz feltét                <span class="desc">sonka, gomba, kukorica, szalámi, ananász, bacon, hagyma, tükörtojás, pirított tökmag</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft / feltét</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Egyéb ételek</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Babgulyás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Tojásrántotta                <span class="desc">3 db tojás</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">900 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Ham and eggs                <span class="desc">4 tojás, sonka</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Kenyér                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / szelet</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Reggeli                <span class="desc">kenyér, sonka, szalámi, dzsem, vaj, kávé, tea</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 000 Ft</span>
+                          </li>
+                      </ul>
+        </article>
               </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Sajtos                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, gombás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, kukoricás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, szalámis                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás, gombás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás, kukoricás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Hawaii            <span class="desc">sajt, sonka, ananász</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás, gombás, kukoricás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Paraszt            <span class="desc">sajt, sonka, gomba, kukorica, szalámi, bacon, hagyma, tükörtojás</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 200 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Őrségi tökmagos            <span class="desc">tejfölös alap, sajt, tökmagolaj, bacon, pirított tökmag</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 200 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Plusz feltét            <span class="desc">sonka, gomba, kukorica, szalámi, ananász, bacon, hagyma, tükörtojás, pirított tökmag</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft / feltét</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Doboz elvitelre                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft</span>
-                  </li>
-              </ul>
     </div>
-        <div class="menu-group" data-group="g1" data-reveal>
-      <div class="menu-group-head">
-        <h2>Melegszendvicsek</h2>
+        <div class="menu-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" data-panel="drinks" hidden>
+      <div class="menu-cards">
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Üdítők</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Coca-Cola                <span class="desc">2,5 dl</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Tonic                <span class="desc">2,5 dl</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Gyömbér                <span class="desc">2,5 dl</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Fanta                <span class="desc">2,5 dl</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cappy                <span class="desc">2,5 dl</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Ásványvíz                <span class="desc">0,5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Kimért szénsavas üdítő                <span class="desc">cola, Fanta, Sprite</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Kimért rostos                <span class="desc">alma, narancs, őszibarack</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Szóda                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">100 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Hell                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Sörök</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Kőbányai                <span class="desc">0,5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">580 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Soproni                <span class="desc">0,5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Dreher                <span class="desc">0,33 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">590 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Csapolt Kőbányai, pohár                <span class="desc">0,3 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">480 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Csapolt Kőbányai, korsó                <span class="desc">0,5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                BeCool alkoholmentes                <span class="desc">citromos vagy meggyes, 0,5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">610 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Borok</h2>
+                        <p class="menu-card-note">Varga pincészet.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Merlot                <span class="desc">édes</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Rosé                <span class="desc">édes</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Irsai                <span class="desc">száraz</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Kávé, tea</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Espresso                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Hosszú kávé                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Kapucsínó                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Tea                <span class="desc">fekete, gyümölcs</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Limonádé</h2>
+                        <p class="menu-card-note">Ízek: kaktuszfüge, vadmálna, fekete ribizli, áfonya, mangó-maracuja · házi: bodza, menta, citromfű, rebarbara.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Limonádé 3 dl                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">900 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Limonádé 5 dl                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">1 200 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Rövid italok</h2>
+                        <p class="menu-card-note">Árak: 3 cl / 5 cl / 1 literes üveg.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Barack ízű szeszes ital                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">360 / 600 / 12 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Vodka                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">360 / 600 / 12 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Jäger                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Unicum                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Unicum szilvás                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Jim Beam                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Eristoff                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Captain Morgan                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Gin                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                      </ul>
+        </article>
               </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Sajtos                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">700 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, gombás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">700 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, szalámis                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">850 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Sajtos, sonkás, gombás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">950 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Plusz feltét            <span class="desc">sonka, gomba, kukorica, szalámi, ananász, bacon, hagyma, tükörtojás, pirított tökmag</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft / feltét</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g2" data-reveal>
-      <div class="menu-group-head">
-        <h2>Egyéb ételek</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Babgulyás                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Tojásrántotta            <span class="desc">3 db tojás</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">900 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Ham and eggs            <span class="desc">4 tojás, sonka</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Kenyér                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / szelet</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Reggeli            <span class="desc">kenyér, sonka, szalámi, dzsem, vaj, kávé, tea</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 000 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g3" data-reveal>
-      <div class="menu-group-head">
-        <h2>Üdítők</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Coca-Cola, tonic, gyömbér, Fanta, Cappy            <span class="desc">2,5 dl</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">650 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Ásványvíz            <span class="desc">0,5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Kimért szénsavas            <span class="desc">cola, Fanta, Sprite</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Kimért rostos            <span class="desc">alma, narancs, őszibarack</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Szóda                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">100 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Hell                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g4" data-reveal>
-      <div class="menu-group-head">
-        <h2>Sörök</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Kőbányai            <span class="desc">0,5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">580 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Soproni            <span class="desc">0,5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">650 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Dreher            <span class="desc">0,33 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">590 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Csapolt Kőbányai, pohár            <span class="desc">0,3 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">480 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Csapolt Kőbányai, korsó            <span class="desc">0,5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            BeCool alkoholmentes            <span class="desc">citromos vagy meggyes, 0,5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">610 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g5" data-reveal>
-      <div class="menu-group-head">
-        <h2>Borok</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Varga pincészet.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Merlot (édes), Rose (édes), Irsai (száraz)                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">250 Ft / dl</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g6" data-reveal>
-      <div class="menu-group-head">
-        <h2>Kávé, tea</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Espresso                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Hosszú kávé                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Kapucsínó                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Tea            <span class="desc">fekete, gyümölcs</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g7" data-reveal>
-      <div class="menu-group-head">
-        <h2>Limonádé</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Ízek: kaktuszfüge, vadmálna, fekete ribizli, áfonya, mangó-maracuja · házi: bodza, menta, citromfű, rebarbara.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Limonádé 3 dl                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">900 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Limonádé 5 dl                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">1 200 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g8" data-reveal>
-      <div class="menu-group-head">
-        <h2>Rövid italok</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Árak: 3 cl / 5 cl / 1 literes üveg.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Barack ízű szeszes ital                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">360 / 600 / 12 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Vodka                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">360 / 600 / 12 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Jäger, Unicum, Unicum szilvás, Jim Beam, Eristoff, Captain Morgan, Gin                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">540 / 900 / 18 000 Ft</span>
-                  </li>
-              </ul>
     </div>
     
-    <p class="lead">Allergének: laktóz, glutén, tojás, tej, zeller, tartósítószerek. Kérdés esetén a pultnál készséggel segítünk.</p>
+    <p class="menu-allergen">Allergének: laktóz, glutén, tojás, tej, zeller, tartósítószerek. Kérdés esetén a pultnál készséggel segítünk.</p>
   </div>
 </section>
 
@@ -640,6 +721,6 @@
   <button class="lightbox-nav lightbox-next" type="button" aria-label="Következő kép">&#8250;</button>
 </div>
 
-<script src="assets/app.js?v=6" defer></script>
+<script src="assets/app.js?v=7" defer></script>
 </body>
 </html>

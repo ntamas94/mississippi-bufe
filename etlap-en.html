@@ -12,12 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Menu — Mississippi Büfé, Egyházasrádóc">
 <meta property="og:description" content="The menu at Mississippi Büfé with prices: pizzas, hot sandwiches, bean goulash, breakfast, lemonade, beer, wine, spirits. Takeaway available.">
-<meta property="og:image" content="images/epulet.jpg">
+<meta property="og:image" content="images/bufe-tabla.jpg">
 <meta property="og:locale" content="en_GB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="assets/app.css?v=7">
+<link rel="stylesheet" href="assets/app.css?v=8">
 <script>
   // villanás nélküli téma: még a CSS előtt beállítjuk
   (function () {
@@ -44,7 +44,7 @@
     "servesCuisine": "Hungarian",
     "priceRange": "$",
     "telephone": "+3694950348",
-    "image": "images/epulet.jpg",
+    "image": "images/bufe-tabla.jpg",
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Alkotmány utca 38.",
@@ -173,365 +173,446 @@
 <section class="section">
   <div class="wrap">
 
-    
-    <div class="menu-filter" role="tablist" aria-label="Menu">
-      <button class="chip is-active" type="button" data-filter="all">All</button>
-            <button class="chip" type="button" data-filter="g0">Pizzas</button>
-            <button class="chip" type="button" data-filter="g1">Hot sandwiches</button>
-            <button class="chip" type="button" data-filter="g2">Other dishes</button>
-            <button class="chip" type="button" data-filter="g3">Soft drinks</button>
-            <button class="chip" type="button" data-filter="g4">Beer</button>
-            <button class="chip" type="button" data-filter="g5">Wine</button>
-            <button class="chip" type="button" data-filter="g6">Coffee &amp; tea</button>
-            <button class="chip" type="button" data-filter="g7">Lemonade</button>
-            <button class="chip" type="button" data-filter="g8">Spirits</button>
+    <div class="menu-tabs" role="tablist" aria-label="Menu">
+            <button class="menu-tab is-active" type="button" role="tab"
+              id="tab-food" aria-controls="panel-food"
+              aria-selected="true" tabindex="0"
+              data-tab="food" data-hash="etelek">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v7a2 2 0 0 0 4 0V2M8 11v11"/><path d="M18 22V2c-2.2 1.5-3 4.5-3 8 0 2 1 3 3 3"/></svg>
+        Food      </button>
+            <button class="menu-tab" type="button" role="tab"
+              id="tab-drinks" aria-controls="panel-drinks"
+              aria-selected="false" tabindex="-1"
+              data-tab="drinks" data-hash="italok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14l-1.5 16a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2L5 4z"/><path d="M5.6 9h12.8"/></svg>
+        Drinks      </button>
           </div>
 
-        <div class="menu-group" data-group="g0" data-reveal>
-      <div class="menu-group-head">
-        <h2>Pizzas</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">All pizzas are 32 cm.</span>
+        <div class="menu-panel" id="panel-food" role="tabpanel" aria-labelledby="tab-food" data-panel="food">
+      <div class="menu-cards">
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Pizzas</h2>
+                        <p class="menu-card-note">All pizzas are 32 cm.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Cheese                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; ham                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; mushroom                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; sweetcorn                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 300 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; salami                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese, ham &amp; mushroom                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese, ham &amp; sweetcorn                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Hawaii                <span class="desc">cheese, ham, pineapple</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese, ham, mushroom &amp; sweetcorn                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Farmhouse (Paraszt)                <span class="desc">cheese, ham, mushroom, sweetcorn, salami, bacon, onion, fried egg</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 200 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Őrség pumpkin seed                <span class="desc">sour cream base, cheese, pumpkin seed oil, bacon, roasted pumpkin seeds</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 200 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Extra topping                <span class="desc">ham, mushroom, sweetcorn, salami, pineapple, bacon, onion, fried egg, roasted pumpkin seeds</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft / topping</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Takeaway box                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Hot sandwiches</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Cheese                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; ham                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">700 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; mushroom                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">700 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese &amp; salami                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">850 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cheese, ham &amp; mushroom                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">950 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Extra topping                <span class="desc">ham, mushroom, sweetcorn, salami, pineapple, bacon, onion, fried egg, roasted pumpkin seeds</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">300 Ft / topping</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Other dishes</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Bean goulash                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Scrambled eggs                <span class="desc">made with 3 eggs</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">900 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Ham and eggs                <span class="desc">4 eggs, ham</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">2 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Bread                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / slice</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Breakfast                <span class="desc">bread, ham, salami, jam, butter, coffee, tea</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">3 000 Ft</span>
+                          </li>
+                      </ul>
+        </article>
               </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Cheese                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; ham                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; mushroom                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; sweetcorn                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 300 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; salami                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese, ham &amp; mushroom                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese, ham &amp; sweetcorn                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Hawaii            <span class="desc">cheese, ham, pineapple</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese, ham, mushroom &amp; sweetcorn                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Farmhouse (Paraszt)            <span class="desc">cheese, ham, mushroom, sweetcorn, salami, bacon, onion, fried egg</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 200 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Őrség pumpkin seed            <span class="desc">sour cream base, cheese, pumpkin seed oil, bacon, roasted pumpkin seeds</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 200 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Extra topping            <span class="desc">ham, mushroom, sweetcorn, salami, pineapple, bacon, onion, fried egg, roasted pumpkin seeds</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft / topping</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Takeaway box                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft</span>
-                  </li>
-              </ul>
     </div>
-        <div class="menu-group" data-group="g1" data-reveal>
-      <div class="menu-group-head">
-        <h2>Hot sandwiches</h2>
+        <div class="menu-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" data-panel="drinks" hidden>
+      <div class="menu-cards">
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Soft drinks</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Coca-Cola                <span class="desc">2.5 dl bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Tonic water                <span class="desc">2.5 dl bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Ginger ale                <span class="desc">2.5 dl bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Fanta                <span class="desc">2.5 dl bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cappy                <span class="desc">2.5 dl bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Mineral water                <span class="desc">0.5 l bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Fizzy drinks on tap                <span class="desc">cola, Fanta, Sprite</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Juices on tap                <span class="desc">apple, orange, peach</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">150 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Soda water                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">100 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Hell energy drink                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Beer</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Kőbányai                <span class="desc">0.5 l bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">580 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Soproni                <span class="desc">0.5 l bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">650 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Dreher                <span class="desc">0.33 l bottle</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">590 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Draught Kőbányai, glass                <span class="desc">0.3 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">480 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Draught Kőbányai, large glass                <span class="desc">0.5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                BeCool alcohol-free                <span class="desc">lemon or sour cherry, 0.5 l</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">610 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Wine</h2>
+                        <p class="menu-card-note">Varga winery.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Merlot                <span class="desc">sweet</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Rosé                <span class="desc">sweet</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Irsai                <span class="desc">dry</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">250 Ft / dl</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Coffee &amp; tea</h2>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Espresso                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">500 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Long coffee                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">600 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Cappuccino                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Tea                <span class="desc">black or fruit</span>              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">800 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Lemonade</h2>
+                        <p class="menu-card-note">Flavours: prickly pear, wild raspberry, blackcurrant, blueberry, mango-passion fruit · homemade: elderflower, mint, lemon balm, rhubarb.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Lemonade 3 dl                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">900 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Lemonade 5 dl                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">1 200 Ft</span>
+                          </li>
+                      </ul>
+        </article>
+                <article class="menu-card">
+          <header class="menu-card-head">
+            <h2>Spirits</h2>
+                        <p class="menu-card-note">Prices: 3 cl / 5 cl / 1-litre bottle.</p>
+                      </header>
+          <ul class="menu-list">
+                        <li class="menu-item">
+              <span class="name">
+                Peach-flavoured spirit                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">360 / 600 / 12 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Vodka                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">360 / 600 / 12 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Jäger                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Unicum                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Unicum Plum                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Jim Beam                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Eristoff                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Captain Morgan                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                        <li class="menu-item">
+              <span class="name">
+                Gin                              </span>
+              <span class="dots" aria-hidden="true"></span>
+                            <span class="price">540 / 900 / 18 000 Ft</span>
+                          </li>
+                      </ul>
+        </article>
               </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Cheese                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; ham                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">700 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; mushroom                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">700 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese &amp; salami                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">850 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cheese, ham &amp; mushroom                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">950 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Extra topping            <span class="desc">ham, mushroom, sweetcorn, salami, pineapple, bacon, onion, fried egg, roasted pumpkin seeds</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">300 Ft / topping</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g2" data-reveal>
-      <div class="menu-group-head">
-        <h2>Other dishes</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Bean goulash                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Scrambled eggs            <span class="desc">made with 3 eggs</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">900 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Ham and eggs            <span class="desc">4 eggs, ham</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">2 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Bread                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / slice</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Breakfast            <span class="desc">bread, ham, salami, jam, butter, coffee, tea</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">3 000 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g3" data-reveal>
-      <div class="menu-group-head">
-        <h2>Soft drinks</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Coca-Cola, tonic, ginger ale, Fanta, Cappy            <span class="desc">2.5 dl bottle</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">650 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Mineral water            <span class="desc">0.5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Fizzy drinks on tap            <span class="desc">cola, Fanta, Sprite</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Juices on tap            <span class="desc">apple, orange, peach</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">150 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Soda water                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">100 Ft / dl</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Hell energy drink                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g4" data-reveal>
-      <div class="menu-group-head">
-        <h2>Beer</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Kőbányai            <span class="desc">0.5 l bottle</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">580 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Soproni            <span class="desc">0.5 l bottle</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">650 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Dreher            <span class="desc">0.33 l bottle</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">590 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Draught Kőbányai, glass            <span class="desc">0.3 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">480 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Draught Kőbányai, pint            <span class="desc">0.5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            BeCool alcohol-free            <span class="desc">lemon or sour cherry, 0.5 l</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">610 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g5" data-reveal>
-      <div class="menu-group-head">
-        <h2>Wine</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Varga winery.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Merlot (sweet), Rosé (sweet), Irsai (dry)                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">250 Ft / dl</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g6" data-reveal>
-      <div class="menu-group-head">
-        <h2>Coffee &amp; tea</h2>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Espresso                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">500 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Long coffee                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">600 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Cappuccino                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Tea            <span class="desc">black or fruit</span>          </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">800 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g7" data-reveal>
-      <div class="menu-group-head">
-        <h2>Lemonade</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Flavours: prickly pear, wild raspberry, blackcurrant, blueberry, mango-passion fruit · homemade: elderflower, mint, lemon balm, rhubarb.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Lemonade 3 dl                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">900 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Lemonade 5 dl                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">1 200 Ft</span>
-                  </li>
-              </ul>
-    </div>
-        <div class="menu-group" data-group="g8" data-reveal>
-      <div class="menu-group-head">
-        <h2>Spirits</h2>
-                <span class="note-text" style="color:var(--ink-faint);font-size:.92rem">Prices: 3 cl / 5 cl / 1-litre bottle.</span>
-              </div>
-      <ul class="menu-list">
-                <li class="menu-item">
-          <span class="name">
-            Peach-flavoured spirit                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">360 / 600 / 12 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Vodka                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">360 / 600 / 12 000 Ft</span>
-                  </li>
-                <li class="menu-item">
-          <span class="name">
-            Jäger, Unicum, Unicum Plum, Jim Beam, Eristoff, Captain Morgan, Gin                      </span>
-          <span class="dots" aria-hidden="true"></span>
-                    <span class="price">540 / 900 / 18 000 Ft</span>
-                  </li>
-              </ul>
     </div>
     
-    <p class="lead">Allergens: lactose, gluten, egg, milk, celery, preservatives. Ask at the counter if you have any questions.</p>
+    <p class="menu-allergen">Allergens: lactose, gluten, egg, milk, celery, preservatives. Ask at the counter if you have any questions.</p>
   </div>
 </section>
 
@@ -640,6 +721,6 @@
   <button class="lightbox-nav lightbox-next" type="button" aria-label="Next photo">&#8250;</button>
 </div>
 
-<script src="assets/app.js?v=6" defer></script>
+<script src="assets/app.js?v=7" defer></script>
 </body>
 </html>
