@@ -49,49 +49,96 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="hu">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Admin belépés — Mississippi Büfé</title>
+<title>Belépés — Mississippi Büfé &amp; Missouri Szálláshely</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/app.css?v=9">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2312241f'/><text y='70' x='50' text-anchor='middle' font-size='60' fill='%23e0a355' font-family='Georgia,serif'>M</text></svg>">
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center;
-         font-family: system-ui, sans-serif; background: #191512; color: #fbf8f2; }
-  .card { width: min(92vw, 380px); background: #221d18; border: 1px solid #3a322a;
-          border-radius: 14px; padding: 28px; }
-  h1 { font-size: 1.15rem; margin: 0 0 6px; }
-  p.note { color: #b5a globális; }
-  p { color: #b5aa9c; font-size: .9rem; margin: 0 0 18px; }
-  label { display: block; font-size: .8rem; margin: 14px 0 6px; color: #d8cfc3; }
-  input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #4a4036;
-          background: #191512; color: #fbf8f2; font-size: 1rem; }
-  input:focus { outline: 2px solid #e8a13c; border-color: transparent; }
-  button { margin-top: 20px; width: 100%; padding: 11px; border: 0; border-radius: 8px;
-           background: linear-gradient(135deg, #e8a13c, #c97f1e); color: #211505;
-           font-weight: 700; font-size: 1rem; cursor: pointer; }
-  .err { background: #3a1f1c; border: 1px solid #6b2f28; color: #f0b9ae;
-         padding: 10px 12px; border-radius: 8px; font-size: .85rem; margin-bottom: 6px; }
-  a { color: #e8a13c; }
+  .login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 30px 20px;
+                background: var(--bg-sunk); }
+  .login-card { width: min(94vw, 420px); background: var(--surface); border: 1px solid var(--line);
+                border-radius: var(--r-lg); box-shadow: var(--shadow-md); padding: 34px 32px; }
+  .login-brand { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px;
+                 text-decoration: none; color: inherit; }
+  .login-brand .brand-mark { width: 42px; height: 42px; display: grid; place-items: center;
+                 border-radius: 12px; background: var(--green-700); color: var(--amber);
+                 font-family: var(--serif); font-size: 1.3rem; }
+  .login-brand span.txt { font-family: var(--serif); font-size: 1.05rem; }
+  .login-brand span.txt em { font-style: normal; color: var(--amber); }
+  .login-card h1 { font-size: 1.35rem; margin: 0 0 8px; }
+  .login-card p.sub { color: var(--ink-soft); font-size: .95rem; margin: 0 0 22px; }
+  .login-card label { display: block; font-size: .88rem; font-weight: 600;
+                      color: var(--ink-soft); margin: 16px 0 7px; }
+  .login-card input { width: 100%; padding: 13px 15px; border: 1px solid var(--line);
+                      border-radius: var(--r-sm); background: var(--surface-2);
+                      color: var(--ink); font: inherit; }
+  .login-card input:focus { outline: 2px solid var(--amber); border-color: transparent; }
+  .login-card .btn { width: 100%; margin-top: 24px; }
+  .login-err { background: rgba(207, 95, 65, .13); border: 1px solid rgba(207, 95, 65, .4);
+               color: #b14b30; padding: 12px 15px; border-radius: var(--r-sm);
+               font-size: .9rem; margin-bottom: 4px; }
+  .login-tip { background: var(--bg-sunk); border-radius: var(--r-sm); padding: 14px 16px;
+               color: var(--ink-soft); font-size: .88rem; margin: 20px 0 0; }
+  .login-back { display: inline-block; margin-top: 20px; font-size: .9rem; color: var(--ink-faint); }
 </style>
 </head>
-<body>
-  <form class="card" method="post" action="login.php">
+<body class="page-login">
+<div class="login-wrap">
+  <form class="login-card" method="post" action="login.php">
     <input type="hidden" name="csrf" value="<?= h(admin_csrf()) ?>">
+
+    <a class="login-brand" href="../index.php">
+      <span class="brand-mark">M</span>
+      <span class="txt">Mississippi <em>Büfé &amp; Szálláshely</em></span>
+    </a>
+
     <?php if ($setupMode): ?>
-      <h1>Admin jelszó beállítása</h1>
-      <p>Első indítás: adj meg egy jelszót a szerkesztőhöz (legalább 8 karakter). Ezzel fogsz ezután belépni.</p>
+      <h1>Válassz egy jelszót</h1>
+      <p class="sub">
+        Most vagy itt először. Ezzel a jelszóval tudod majd átírni az oldal szövegeit és árait.
+        Legalább 8 karakter legyen.
+      </p>
     <?php else: ?>
-      <h1>Admin belépés</h1>
-      <p>Mississippi Büfé &amp; Missouri Szálláshely — szövegszerkesztő.</p>
+      <h1>Belépés a szerkesztőbe</h1>
+      <p class="sub">
+        Add meg a jelszavad, és szerkesztheted az oldal szövegeit, árait.
+      </p>
     <?php endif; ?>
-    <?php if ($err): ?><div class="err"><?= h($err) ?></div><?php endif; ?>
+
+    <?php if ($err): ?><div class="login-err"><?= h($err) ?></div><?php endif; ?>
+
     <label for="pass">Jelszó</label>
     <input type="password" id="pass" name="pass" required minlength="<?= $setupMode ? 8 : 1 ?>" autofocus autocomplete="<?= $setupMode ? 'new-password' : 'current-password' ?>">
+
     <?php if ($setupMode): ?>
       <label for="pass2">Jelszó még egyszer</label>
       <input type="password" id="pass2" name="pass2" required minlength="8" autocomplete="new-password">
     <?php endif; ?>
-    <button type="submit"><?= $setupMode ? 'Beállítás és belépés' : 'Belépés' ?></button>
+
+    <button class="btn btn--primary" type="submit"><?= $setupMode ? 'Jelszó mentése és belépés' : 'Belépés' ?></button>
+
+    <?php if ($setupMode): ?>
+    <p class="login-tip">
+      Írd fel a jelszót valahová. Ha elfelejtenéd, a szerveren a <code>data/admin.php</code>
+      fájlt kell törölni, és újra beállíthatod.
+    </p>
+    <?php endif; ?>
+
+    <a class="login-back" href="../index.php">← Vissza az oldalra</a>
   </form>
+</div>
 </body>
 </html>
