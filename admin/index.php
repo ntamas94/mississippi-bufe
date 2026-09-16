@@ -1,11 +1,12 @@
 <?php
 /**
- * Szerkesztő felület — az oldal saját kinézetével, hétköznapi feliratokkal.
+ * Szövegszerkesztő — az oldal minden felirata, hétköznapi megnevezésekkel.
  *
- * A lang/*.php minden szövege és a szobaárak átírhatók böngészőből.
- * A módosítások a data/overrides.<nyelv>.json és a data/site.json fájlba
- * kerülnek, az eredeti fájlokhoz nem nyúlunk — így bármikor vissza lehet
- * térni az alapszöveghez (elég a mezőt visszaírni az eredetire).
+ * A lang/*.php szövegei átírhatók böngészőből. A módosítások a
+ * data/overrides.<nyelv>.json fájlba kerülnek, az eredeti fájlokhoz nem
+ * nyúlunk — így bármikor vissza lehet térni az alapszöveghez.
+ *
+ * Nyitvatartás, elérhetőség, szobaárak: alapadatok.php · Képek: kepek.php
  */
 require __DIR__ . '/_auth.php';
 admin_require();
@@ -37,9 +38,21 @@ foreach (array_keys($flat) as $p) {                    // technikai kulcsok nem 
     }
 }
 
+$CFG = require $ROOT . '/inc/config.php';
+
+// Az adminból feltöltött galériaképek felirata nincs az alap nyelvi fájlban —
+// ezeket üres alapértékkel vesszük fel, hogy itt is szerkeszthetők legyenek.
+$extraKeys = [];
+foreach ($CFG['gallery'] as $g) {
+    $p = 'gallery.' . $g['key'];
+    if (!array_key_exists($p, $flat)) {
+        $flat[$p]       = '';
+        $extraKeys[$p]  = true;
+    }
+}
+
 $ovFile    = ADMIN_DATA . '/overrides.' . $lang . '.json';
 $overrides = is_file($ovFile) ? (json_decode((string) file_get_contents($ovFile), true) ?: []) : [];
-$siteFile  = ADMIN_DATA . '/site.json';
 $msg       = '';
 $msgOk     = true;
 
@@ -49,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mkdir(ADMIN_DATA, 0775, true);
     }
 
-    // ---- Szövegek mentése ----
     if (($_POST['which'] ?? '') === 'texts' && isset($_POST['f']) && is_array($_POST['f'])) {
         $new = [];
         foreach ($flat as $path => $baseVal) {
@@ -66,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($val === $baseVal) {
                     continue;                          // egyezik az alappal → nincs felülírás
                 }
-            } elseif ($val === $baseVal) {
+            } elseif ($val === $baseVal && !isset($extraKeys[$path])) {
                 continue;
             }
             $new[$path] = $val;
@@ -83,38 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             : 'Elmentve. Az oldalon már az új szöveg látszik. Jelenleg ' . count($new)
               . ' mező tér el az eredetitől (' . $langs[$lang] . ').';
     }
-
-    // ---- Szobaárak mentése ----
-    if (($_POST['which'] ?? '') === 'site') {
-        $site = is_file($siteFile) ? (json_decode((string) file_get_contents($siteFile), true) ?: []) : [];
-        $rp = [];
-        foreach ([1, 2, 3, 4] as $g) {
-            $plain = (int) preg_replace('/\D/', '', (string) ($_POST['rp'][$g][0] ?? ''));
-            $bf    = (int) preg_replace('/\D/', '', (string) ($_POST['rp'][$g][1] ?? ''));
-            if ($plain > 0 && $bf > 0) {
-                $rp[$g] = [$plain, $bf];
-            }
-        }
-        if ($rp) {
-            $site['room_prices'] = $rp;
-        }
-        $bpp = (int) preg_replace('/\D/', '', (string) ($_POST['bpp'] ?? ''));
-        if ($bpp > 0) {
-            $site['breakfast_per_person'] = $bpp;
-        }
-        $ok    = file_put_contents(
-            $siteFile,
-            json_encode($site, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
-            LOCK_EX
-        );
-        $msgOk = $ok !== false;
-        $msg   = $ok === false
-            ? 'Nem sikerült menteni. A szerveren a data mappa nem írható.'
-            : 'Szobaárak elmentve.';
-    }
 }
-
-$CFG = require $ROOT . '/inc/config.php';              // már a mentett árakkal
 
 /* ---------------------------------------------------------------
    Emberi feliratok: a technikai kulcsok helyett magyar megnevezés
@@ -140,8 +121,9 @@ $sectionNames = [
 $sectionHints = [
     'menu'    => 'Az étlap tételei és áraik. Az ár mezőbe csak számot írj, a „Ft” magától kerül oda.',
     'home'    => 'A kezdőlap szövegei fentről lefelé haladva.',
-    'motel'   => 'A szálláshely oldal szövegei: szobák, szolgáltatások, árakhoz tartozó megjegyzések.',
-    'contact' => 'Elérhetőségek környéki szövegek. A telefonszám és a cím nem itt, hanem a fejlécben mindenhol együtt változik.',
+    'motel'   => 'A szálláshely oldal szövegei: szobák, szolgáltatások, árakhoz tartozó megjegyzések. Maguk az árak a „Nyitvatartás, elérhetőség, árak” fülön vannak.',
+    'gallery' => 'A képek felirata. Képet cserélni vagy újat feltölteni a „Képek” fülön lehet.',
+    'contact' => 'A kapcsolat oldal szövegei. A telefonszám, cím és nyitvatartás a „Nyitvatartás, elérhetőség, árak” fülön módosítható.',
     'form'    => 'A foglalási űrlap feliratai és hibaüzenetei.',
     'common'  => 'Olyan feliratok, amelyek több oldalon is megjelennek (például „Tovább”, „Hívás”).',
 ];
@@ -262,20 +244,18 @@ $pathLabels = [
 
 /** Felsorolások megnevezése (ahol a lista elemei sima szövegek). */
 $containerLabels = [
-    'home.badges'       => 'Címkék a főcím alatt',
-    'home.buffet_list'  => 'Büfé – felsorolás',
-    'home.motel_list'   => 'Szálláshely – felsorolás',
-    'home.quotes'       => 'Vendégvélemények',
-    'motel.features'    => 'Szolgáltatások listája',
+    'home.badges'        => 'Címkék a főcím alatt',
+    'home.buffet_list'   => 'Büfé – felsorolás',
+    'home.motel_list'    => 'Szálláshely – felsorolás',
+    'home.quotes'        => 'Vendégvélemények',
+    'motel.features'     => 'Szolgáltatások listája',
     'contact.route_list' => 'Útvonal lépései',
 ];
 
 /** Galéria: kulcs → fájlnév, hogy látszódjon, melyik képhez tartozik a felirat. */
 $galleryFiles = [];
-foreach ($CFG['gallery'] ?? [] as $g) {
-    if (isset($g['key'], $g['file'])) {
-        $galleryFiles[$g['key']] = $g['file'];
-    }
+foreach ($CFG['gallery'] as $g) {
+    $galleryFiles[$g['key']] = $g['file'];
 }
 
 /** Konténer-kulcsok, amiket nem írunk ki külön morzsaként (a listaelemnek saját neve van). */
@@ -375,151 +355,15 @@ foreach ($flat as $path => $v) {
 }
 
 $editedTotal = count($overrides);
+
+$adminTitle = 'Szövegek';
+$adminTab   = 'texts';
+require __DIR__ . '/_head.php';
 ?>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<title>Szerkesztés — Mississippi Büfé &amp; Missouri Szálláshely</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/app.css?v=9">
-<script>
-  // villanás nélküli téma: még a CSS előtt beállítjuk
-  (function () {
-    try {
-      var t = localStorage.getItem('theme');
-      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-  })();
-</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2312241f'/><text y='70' x='50' text-anchor='middle' font-size='60' fill='%23e0a355' font-family='Georgia,serif'>M</text></svg>">
-<style>
-  /* Csak a szerkesztéshez kell — az oldal saját színeit és formáit használja. */
-  .edit-main { padding: 34px 0 40px; }
-  .edit-head { margin-bottom: 22px; }
-  .edit-head h1 { margin: 6px 0 10px; }
-  .edit-msg { margin: 0 0 20px; padding: 15px 20px; border-radius: var(--r-sm); font-weight: 500; }
-  .edit-msg.is-ok  { background: rgba(63, 154, 109, .14); color: #2c7a55; border: 1px solid rgba(63, 154, 109, .35); }
-  .edit-msg.is-bad { background: rgba(207, 95, 65, .13); color: #b14b30; border: 1px solid rgba(207, 95, 65, .4); }
-
-  .edit-panel { background: var(--surface); border: 1px solid var(--line);
-                border-radius: var(--r); box-shadow: var(--shadow-sm); padding: 24px 26px; margin-bottom: 18px; }
-  .edit-panel h2 { font-size: 1.15rem; margin: 0 0 6px; }
-  .edit-panel .hint { color: var(--ink-soft); font-size: .92rem; margin: 0 0 18px; }
-
-  .price-table { width: 100%; border-collapse: collapse; }
-  .price-table th, .price-table td { padding: 8px 10px; text-align: left; vertical-align: middle; }
-  .price-table thead th { font-size: .85rem; color: var(--ink-faint); font-weight: 600; }
-  .price-table tbody th { font-weight: 600; white-space: nowrap; }
-  .price-table input { width: 130px; padding: 10px 12px; border: 1px solid var(--line);
-                       border-radius: var(--r-sm); background: var(--surface-2); color: var(--ink); font: inherit; }
-  .price-table tr + tr th, .price-table tr + tr td { border-top: 1px solid var(--line-soft); }
-
-  .edit-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
-  .edit-search { flex: 1 1 260px; padding: 12px 15px; border: 1px solid var(--line);
-                 border-radius: var(--r-sm); background: var(--surface-2); color: var(--ink); font: inherit; }
-  .edit-count { color: var(--ink-faint); font-size: .9rem; }
-
-  .edit-sec { background: var(--surface); border: 1px solid var(--line);
-              border-radius: var(--r); margin-bottom: 12px; overflow: hidden; }
-  .edit-sec > summary { cursor: pointer; padding: 16px 22px; font-family: var(--serif);
-                        font-size: 1.05rem; font-weight: 600; list-style: none; display: flex;
-                        align-items: baseline; gap: 10px; flex-wrap: wrap; }
-  .edit-sec > summary::-webkit-details-marker { display: none; }
-  .edit-sec > summary::before { content: '▸'; color: var(--amber); font-size: .9em; }
-  .edit-sec[open] > summary::before { content: '▾'; }
-  .edit-sec > summary:hover { background: var(--bg-sunk); }
-  .edit-sec small { color: var(--ink-faint); font-weight: 400; font-family: var(--sans, inherit); font-size: .85rem; }
-  .edit-body { padding: 4px 22px 22px; }
-  .edit-body > .hint { color: var(--ink-soft); font-size: .9rem; margin: 0 0 16px; }
-
-  .edit-group { border-top: 1px solid var(--line-soft); padding-top: 16px; margin-top: 16px; }
-  .edit-group:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
-  .edit-group h3 { font-size: .95rem; margin: 0 0 12px; color: var(--ink-soft); font-family: inherit; }
-  .edit-group h3 span { color: var(--ink-faint); font-weight: 400; }
-
-  .edit-rows { display: grid; gap: 14px; }
-  .edit-row label { font-size: .87rem; font-weight: 600; color: var(--ink-soft);
-                    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .edit-row input, .edit-row textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--line);
-                    border-radius: var(--r-sm); background: var(--surface-2); color: var(--ink); font: inherit; }
-  .edit-row textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
-  .edit-row input:focus, .edit-row textarea:focus { outline: 2px solid var(--amber); border-color: transparent; }
-  .edit-row.is-edited input, .edit-row.is-edited textarea { border-color: var(--amber); background: rgba(224, 163, 85, .06); }
-  .tag-edited { font-weight: 600; color: var(--amber-600); font-size: .78rem;
-                background: rgba(224, 163, 85, .16); padding: 2px 8px; border-radius: 999px; }
-  .btn-reset { border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
-               font: inherit; font-size: .78rem; padding: 2px 10px; border-radius: 999px; cursor: pointer; }
-  .btn-reset:hover { border-color: var(--amber); color: var(--amber-600); }
-  .orig { font-size: .82rem; color: var(--ink-faint); margin: 0; }
-
-  .savebar { position: sticky; bottom: 0; z-index: 3; margin-top: 18px;
-             background: color-mix(in srgb, var(--bg-alt) 92%, transparent);
-             backdrop-filter: blur(8px); border-top: 1px solid var(--line);
-             padding: 14px 0; display: flex; gap: 14px; align-items: center; justify-content: flex-end; }
-  .savebar .note { margin: 0; margin-right: auto; color: var(--ink-faint); font-size: .88rem; }
-
-  .edit-foot { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--ink-faint); font-size: .88rem; }
-  @media (max-width: 640px) {
-    .edit-panel { padding: 20px 18px; }
-    .edit-body { padding: 4px 16px 18px; }
-    .price-table input { width: 100%; min-width: 92px; }
-  }
-</style>
-</head>
-<body class="page-admin">
-
-<a class="skip-link" href="#main">Ugrás a szerkesztéshez</a>
-
-<header class="site-header" id="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="../index.php">
-      <span class="brand-mark">M</span>
-      <span class="brand-text">Mississippi <em>Büfé &amp; Szálláshely</em></span>
-    </a>
-
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menü">
-      <span class="nav-toggle-bars"></span>
-    </button>
-
-    <nav class="site-nav" id="site-nav" aria-label="Menü">
-      <ul class="nav-list">
-        <li><a href="../index.php">Kezdőlap</a></li>
-        <li><a href="../etlap.php">Étlap</a></li>
-        <li><a href="../szallas.php">Szálláshely</a></li>
-        <li><a href="../esemenyek.php">Események</a></li>
-        <li><a href="../galeria.php">Galéria</a></li>
-        <li><a href="../kapcsolat.php">Kapcsolat</a></li>
-        <li><a href="index.php" aria-current="page">Szerkesztés</a></li>
-      </ul>
-
-      <div class="nav-side">
-        <button class="theme-toggle" type="button" aria-label="Sötét / világos" aria-pressed="false">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>
-        </button>
-        <div class="lang-switch" role="group" aria-label="Szerkesztett nyelv">
-          <?php foreach ($langs as $code => $label): ?>
-          <a href="index.php?lang=<?= h($code) ?>" class="lang<?= $code === $lang ? ' is-active' : '' ?>" title="<?= h($label) ?>"><?= h(strtoupper($code)) ?></a>
-          <?php endforeach; ?>
-        </div>
-        <a class="btn btn--primary btn--sm" href="logout.php">Kilépés</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main id="main" class="edit-main">
-  <div class="wrap">
 
     <div class="edit-head">
       <p class="eyebrow">Szerkesztés</p>
-      <h1>Az oldal szövegei és árai</h1>
+      <h1>Az oldal szövegei</h1>
       <p class="lead">
         Írd át a mezőt, aztán kattints a mentésre. Az oldalon azonnal az új szöveg jelenik meg.
         Elrontani nem lehet: minden mező mellett ott a <em>Vissza az eredetire</em> gomb.
@@ -530,38 +374,6 @@ $editedTotal = count($overrides);
     <div class="edit-msg <?= $msgOk ? 'is-ok' : 'is-bad' ?>"><?= h($msg) ?></div>
     <?php endif; ?>
 
-    <!-- Szobaárak: nyelvtől független -->
-    <section class="edit-panel">
-      <h2>Szobaárak</h2>
-      <p class="hint">Egy éjszakára, forintban. Mindhárom nyelven ugyanez jelenik meg.</p>
-      <form method="post">
-        <input type="hidden" name="csrf" value="<?= h(admin_csrf()) ?>">
-        <input type="hidden" name="which" value="site">
-        <table class="price-table">
-          <thead>
-            <tr><th>Hányan alszanak</th><th>Reggeli nélkül</th><th>Reggelivel</th></tr>
-          </thead>
-          <tbody>
-          <?php foreach ($CFG['room_prices'] as $g => [$plain, $bf]): ?>
-            <tr>
-              <th scope="row"><?= (int) $g ?> fő</th>
-              <td><input type="number" name="rp[<?= (int) $g ?>][0]" value="<?= (int) $plain ?>" min="0" step="100" aria-label="<?= (int) $g ?> fő, reggeli nélkül"></td>
-              <td><input type="number" name="rp[<?= (int) $g ?>][1]" value="<?= (int) $bf ?>" min="0" step="100" aria-label="<?= (int) $g ?> fő, reggelivel"></td>
-            </tr>
-          <?php endforeach; ?>
-            <tr>
-              <th scope="row">Reggeli egy főre</th>
-              <td colspan="2"><input type="number" name="bpp" value="<?= (int) $CFG['breakfast_per_person'] ?>" min="0" step="50" aria-label="Reggeli ára egy főre"></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="savebar" style="position: static; border: 0; background: none; padding: 16px 0 0;">
-          <button class="btn btn--primary" type="submit">Szobaárak mentése</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- Szövegek -->
     <div class="edit-tools">
       <input type="search" id="q" class="edit-search" placeholder="Keresés a szövegek közt — például: pizza, reggeli, kutya">
       <span class="edit-count">
@@ -606,7 +418,7 @@ $editedTotal = count($overrides);
             <div class="edit-rows">
               <?php foreach ($items as $path => $baseVal):
                   $cur     = array_key_exists($path, $overrides) ? $overrides[$path] : $baseVal;
-                  $edited  = array_key_exists($path, $overrides);
+                  $edited  = array_key_exists($path, $overrides) && !isset($extraKeys[$path]);
                   $all     = human_crumbs($base, $path, $dict);
                   $label   = end($all);
                   $isNum   = is_int($baseVal);
@@ -617,7 +429,9 @@ $editedTotal = count($overrides);
                 <label for="<?= h($id) ?>">
                   <?= h($label) ?>
                   <?php if ($edited): ?><span class="tag-edited">módosítva</span><?php endif; ?>
+                  <?php if (!isset($extraKeys[$path])): ?>
                   <button class="btn-reset" type="button" data-reset="<?= h($id) ?>" data-base="<?= h((string) $baseVal) ?>">Vissza az eredetire</button>
+                  <?php endif; ?>
                 </label>
                 <?php if ($isNum): ?>
                 <input type="number" id="<?= h($id) ?>" name="f[<?= h($path) ?>]" value="<?= (int) $cur ?>" min="0" data-base="<?= (int) $baseVal ?>">
@@ -646,15 +460,11 @@ $editedTotal = count($overrides);
 
     <p class="edit-foot">
       Az eredeti szövegek érintetlenek maradnak. Ha egy mezőt visszaírsz az eredetire,
-      a módosítás magától törlődik. A fotókat és a képaláírásokat nem itt, hanem a képek
-      mappájában és a galéria beállításai közt lehet cserélni.
+      a módosítás magától törlődik.
     </p>
 
-  </div>
-</main>
-
-<script src="../assets/app.js?v=8" defer></script>
-<script>
+<?php
+$adminScript = <<<'JS'
 (function () {
   // keresés a mezők közt
   var q = document.getElementById('q');
@@ -710,6 +520,5 @@ $editedTotal = count($overrides);
     });
   }
 })();
-</script>
-</body>
-</html>
+JS;
+require __DIR__ . '/_foot.php';

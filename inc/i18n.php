@@ -72,10 +72,15 @@ if (is_file($__ovFile)) {
                 }
                 $__ref =& $__ref[$__p];
             }
-            if ($__ok && is_array($__ref) && array_key_exists($__last, $__ref)) {
-                if (is_int($__ref[$__last])) {
-                    $__ref[$__last] = (int) $__val;
-                } elseif (is_string($__ref[$__last])) {
+            if ($__ok && is_array($__ref)) {
+                if (array_key_exists($__last, $__ref)) {
+                    if (is_int($__ref[$__last])) {
+                        $__ref[$__last] = (int) $__val;
+                    } elseif (is_string($__ref[$__last])) {
+                        $__ref[$__last] = (string) $__val;
+                    }
+                } elseif ($__parts === ['gallery'] && str_starts_with((string) $__last, 'g_')) {
+                    // az adminból feltöltött új galériakép felirata (nincs az alap nyelvi fájlban)
                     $__ref[$__last] = (string) $__val;
                 }
             }
@@ -119,6 +124,13 @@ function ta(string $key): array
 function e(?string $s): string
 {
     return htmlspecialchars((string) $s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+/** Kép URL verziószámmal — csere után a böngésző ne a régi, gyorsítótárazott képet mutassa */
+function img(string $file): string
+{
+    $p = __DIR__ . '/../images/' . $file;
+    return 'images/' . $file . (is_file($p) ? '?v=' . filemtime($p) : '');
 }
 
 /** Belső link a jelenlegi nyelvvel */

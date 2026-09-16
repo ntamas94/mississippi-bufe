@@ -82,12 +82,14 @@ $CFG_BASE = [
     'street_view' => 'https://www.google.com/maps/@?api=1&map_action=pano&pano=_SbSJYeIh1C1OgcZ2ylGeA',
 ];
 
-// Az adminban mentett árak felülírják a fentieket (data/site.json).
+// Az adminban mentett adatok felülírják a fentieket (data/site.json):
+// szobaárak, elérhetőségek, nyitvatartás, galéria-módosítások.
 $__siteFile = __DIR__ . '/../data/site.json';
 if (is_file($__siteFile)) {
     // A kezdő UTF-8 BOM-ot levágjuk (pl. Jegyzettömbből mentett fájl), különben a json_decode elhasal.
     $__site = json_decode(preg_replace('/^\xEF\xBB\xBF/', '', (string) file_get_contents($__siteFile)), true);
     if (is_array($__site)) {
+        // szobaárak
         foreach (($__site['room_prices'] ?? []) as $__g => $__pair) {
             $__g = (int) $__g;
             if (isset($CFG_BASE['room_prices'][$__g]) && is_array($__pair) && count($__pair) === 2) {
@@ -97,9 +99,60 @@ if (is_file($__siteFile)) {
         if (is_numeric($__site['breakfast_per_person'] ?? null)) {
             $CFG_BASE['breakfast_per_person'] = (int) $__site['breakfast_per_person'];
         }
+
+        // elérhetőségek
+        foreach (['phone', 'mobile', 'mail_to', 'facebook', 'street', 'city', 'zip'] as $__k) {
+            if (isset($__site[$__k]) && is_string($__site[$__k]) && trim($__site[$__k]) !== '') {
+                $CFG_BASE[$__k] = trim($__site[$__k]);
+            }
+        }
+
+        // nyitvatartás: csak a nyitva tartott napok szerepelnek, ["ÓÓ:PP", "ÓÓ:PP"] párral
+        if (isset($__site['hours']) && is_array($__site['hours'])) {
+            $__h = [];
+            foreach ($__site['hours'] as $__d => $__pair) {
+                $__d = (int) $__d;
+                if ($__d < 0 || $__d > 6 || !is_array($__pair) || count($__pair) !== 2) {
+                    continue;
+                }
+                [$__o, $__c] = array_values($__pair);
+                if (is_string($__o) && is_string($__c)
+                    && preg_match('/^\d{1,2}:\d{2}$/', $__o) && preg_match('/^\d{1,2}:\d{2}$/', $__c)) {
+                    $__h[$__d] = [$__o, $__c];
+                }
+            }
+            if ($__h) {
+                $CFG_BASE['hours'] = $__h;
+            }
+        }
+
+        // galéria: adminból feltöltött új képek, elrejtett képek, sorrend
+        foreach (($__site['gallery_extra'] ?? []) as $__g) {
+            if (is_array($__g) && isset($__g['file'], $__g['key'])
+                && preg_match('/^[a-z0-9_-]+\.(jpe?g|png|webp)$/i', (string) $__g['file'])
+                && preg_match('/^g_[a-z0-9_]+$/', (string) $__g['key'])) {
+                $CFG_BASE['gallery'][] = ['file' => $__g['file'], 'key' => $__g['key']];
+            }
+        }
+        // (az admin képkezelője a CFG_KEEP_HIDDEN konstanssal a rejtetteket is látja)
+        if (!defined('CFG_KEEP_HIDDEN') && !empty($__site['gallery_hidden']) && is_array($__site['gallery_hidden'])) {
+            $__hid = array_flip(array_map('strval', $__site['gallery_hidden']));
+            $CFG_BASE['gallery'] = array_values(array_filter(
+                $CFG_BASE['gallery'],
+                fn($s) => !isset($__hid[$s['key']])
+            ));
+        }
+        if (!empty($__site['gallery_order']) && is_array($__site['gallery_order'])) {
+            $__pos = array_flip(array_values(array_map('strval', $__site['gallery_order'])));
+            usort($CFG_BASE['gallery'], fn($a, $b) => ($__pos[$a['key']] ?? 9999) <=> ($__pos[$b['key']] ?? 9999));
+        }
     }
-    unset($__site, $__g, $__pair);
+    unset($__site, $__g, $__pair, $__k, $__h, $__d, $__o, $__c, $__hid, $__pos);
 }
 unset($__siteFile);
+
+// A hívógombhoz használt "nyers" szám mindig a megjelenített számból készül.
+$CFG_BASE['phone_raw']  = preg_replace('/[^+\d]/', '', $CFG_BASE['phone']);
+$CFG_BASE['mobile_raw'] = preg_replace('/[^+\d]/', '', $CFG_BASE['mobile']);
 
 return $CFG_BASE;

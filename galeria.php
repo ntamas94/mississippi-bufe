@@ -31,7 +31,7 @@ require __DIR__ . '/inc/head.php';
           $caption = t('gallery.' . $shot['key']); ?>
       <figure data-reveal data-delay="<?= $i % 4 ?>">
         <button class="shot" type="button" data-caption="<?= e($caption) ?>">
-          <img src="images/<?= e($shot['file']) ?>" alt="<?= e($caption) ?>" loading="lazy">
+          <img src="<?= e(img($shot['file'])) ?>" alt="<?= e($caption) ?>" loading="lazy">
         </button>
         <figcaption><?= e($caption) ?></figcaption>
       </figure>

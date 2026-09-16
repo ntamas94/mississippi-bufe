@@ -88,7 +88,7 @@ require __DIR__ . '/inc/head.php';
     <div class="grid grid--2">
       <article class="card" data-reveal>
         <div class="card-media">
-          <img src="images/pizza.jpg" alt="<?= e(t('gallery.g_pizza')) ?>" loading="lazy" width="1125" height="844">
+          <img src="<?= e(img('pizza.jpg')) ?>" alt="<?= e(t('gallery.g_pizza')) ?>" loading="lazy" width="1125" height="844">
         </div>
         <div class="card-body">
           <span class="tag"><?= e(t('home.buffet_tag')) ?></span>
@@ -107,7 +107,7 @@ require __DIR__ . '/inc/head.php';
 
       <article class="card" data-reveal data-delay="1">
         <div class="card-media">
-          <img src="images/motel-epulet.jpg" alt="<?= e(t('gallery.g_motel_front')) ?>" loading="lazy" width="1600" height="900">
+          <img src="<?= e(img('motel-epulet.jpg')) ?>" alt="<?= e(t('gallery.g_motel_front')) ?>" loading="lazy" width="1600" height="900">
         </div>
         <div class="card-body">
           <span class="tag"><?= e(t('home.motel_tag')) ?></span>
@@ -139,17 +139,17 @@ require __DIR__ . '/inc/head.php';
       <div class="gallery" data-reveal data-delay="1" style="grid-template-columns:1fr 1fr">
         <figure style="grid-column:1 / -1">
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace_pond')) ?>">
-            <img src="images/terasz-to.jpg" alt="<?= e(t('gallery.g_terrace_pond')) ?>" loading="lazy" width="1600" height="1200">
+            <img src="<?= e(img('terasz-to.jpg')) ?>" alt="<?= e(t('gallery.g_terrace_pond')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
         <figure>
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_garden')) ?>">
-            <img src="images/kert-to.jpg" alt="<?= e(t('gallery.g_garden')) ?>" loading="lazy" width="1600" height="1200">
+            <img src="<?= e(img('kert-to.jpg')) ?>" alt="<?= e(t('gallery.g_garden')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
         <figure>
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_terrace_play')) ?>">
-            <img src="images/terasz-jatszoter.jpg" alt="<?= e(t('gallery.g_terrace_play')) ?>" loading="lazy" width="1600" height="1200">
+            <img src="<?= e(img('terasz-jatszoter.jpg')) ?>" alt="<?= e(t('gallery.g_terrace_play')) ?>" loading="lazy" width="1600" height="1200">
           </button>
         </figure>
       </div>

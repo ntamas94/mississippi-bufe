@@ -18,7 +18,7 @@ nincs Composer, nincs adatbázis. Bármilyen PHP 8.1+ tárhelyen fut.
 | `lang/hu.php`, `lang/en.php`, `lang/de.php` | Minden szöveg nyelvenként, **az étlap is itt van** |
 | `assets/app.css`, `assets/app.js` | Stílus (világos + sötét téma) és interakciók |
 | `images/` | Fotók |
-| `admin/` | Böngészős szöveg- és árszerkesztő (lásd lent) |
+| `admin/` | Böngészős szerkesztő: szövegek, nyitvatartás/elérhetőség/árak, képek (lásd lent) |
 | `data/` | Napló, admin-mentések, FB-gyorsítótár (a szerver hozza létre, `.htaccess` védi) |
 | `Dockerfile`, `docker-compose.yml`, `docker/` | Docker-futtatás (PHP 8.4 + Apache) |
 
@@ -111,16 +111,31 @@ Google Fonts (Inter, Playfair Display) és a Google Térkép iframe. Minden más
 Ha a betűtípusokat is helyben szeretnéd, töltsd le őket az `assets/fonts` mappába és
 cseréld a `<link>` sorokat `@font-face` deklarációkra az `app.css` elején.
 
-## Admin szövegszerkesztő
+## Admin felület
 
-A `/admin/` címen böngészőből átírható az oldal **minden szövege és ára**
-(étlap, szobaárak, mindhárom nyelven), fájlszerkesztés nélkül.
+A `/admin/` címen böngészőből, fájlszerkesztés nélkül karbantartható az oldal.
+Három fül:
+
+- **Szövegek** — az oldal minden felirata és az étlap árai, mindhárom nyelven,
+  hétköznapi megnevezésekkel („Kezdőlap › Büfé – cím”), kereséssel.
+- **Nyitvatartás, elérhetőség, árak** — heti nyitvatartás (zárva nap pipával),
+  telefon/mobil/e-mail/Facebook/cím, szobaárak. A „nyitva / zárva” jelző, a
+  lábléc, a kapcsolat oldal és a Google-cégadat (JSON-LD) mind ebből dolgozik.
+- **Képek** — kép cseréje (ugyanaz a fájlnév → az oldal minden helyén frissül),
+  új galériakép feltöltése felirattal, elrejtés, sorrend. Telefonról is megy:
+  a böngésző már kicsinyítve küldi (max. 1800 px), a szerver GD-vel véglegesíti
+  (max. 1600 px, JPEG). Az előző változat a `data/img-backup/` alá kerül és
+  egy gombbal visszahozható.
 
 - **Első megnyitáskor** a `/admin/login.php` jelszóbeállítást kér — ezt a
   jelszót te adod meg, és csak a hash-e tárolódik (`data/admin.php`).
 - A módosítások a `data/overrides.<nyelv>.json` és `data/site.json` fájlokba
   kerülnek; a `lang/*.php` és `inc/config.php` alapfájlok érintetlenek maradnak.
   Ha egy mezőt visszaírsz az eredetire, a felülírás magától törlődik.
+- Képcseréhez a PHP **GD** bővítmény kell (a Docker-képben benne van; tárhelyen
+  szinte mindenhol alapból megvan). A feltöltési korlát a szerver
+  `upload_max_filesize` / `post_max_size` értéke — a böngészős kicsinyítés miatt
+  egy fotó jellemzően 300–500 KB, így a szokásos 2–8 MB bőven elég.
 - A `data/` mappát az Apache (Dockerfile: `protect-data.conf`, illetve
   `data/.htaccess`) kívülről letiltja; Docker alatt a `booking-data` volume
   miatt a mentések a konténer újraindítását is túlélik.

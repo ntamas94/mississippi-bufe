@@ -38,19 +38,19 @@ require __DIR__ . '/inc/head.php';
       <div class="gallery" data-reveal data-delay="1" style="grid-template-columns:1fr 1fr">
         <figure style="grid-column:1 / -1">
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_motel_front')) ?>">
-            <img src="images/motel-epulet.jpg" alt="<?= e(t('gallery.g_motel_front')) ?>" loading="lazy" width="1600" height="900">
+            <img src="<?= e(img('motel-epulet.jpg')) ?>" alt="<?= e(t('gallery.g_motel_front')) ?>" loading="lazy" width="1600" height="900">
           </button>
           <figcaption><?= e(t('gallery.g_motel_front')) ?></figcaption>
         </figure>
         <figure>
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_room')) ?>">
-            <img src="images/szoba-1.jpg" alt="<?= e(t('gallery.g_room')) ?>" loading="lazy">
+            <img src="<?= e(img('szoba-1.jpg')) ?>" alt="<?= e(t('gallery.g_room')) ?>" loading="lazy">
           </button>
           <figcaption><?= e(t('gallery.g_room')) ?></figcaption>
         </figure>
         <figure>
           <button class="shot" type="button" data-caption="<?= e(t('gallery.g_bath')) ?>">
-            <img src="images/furdo.jpg" alt="<?= e(t('gallery.g_bath')) ?>" loading="lazy">
+            <img src="<?= e(img('furdo.jpg')) ?>" alt="<?= e(t('gallery.g_bath')) ?>" loading="lazy">
           </button>
           <figcaption><?= e(t('gallery.g_bath')) ?></figcaption>
         </figure>
